@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\App.xaml
-21470172085
+546903799
 
-7-560385248
+10-364291792
 481326687208
-MainWindow.xaml;User Control\Home.xaml;
+MainWindow.xaml;User Control\Explore.xaml;User Control\Home.xaml;User Control\ListSong.xaml;User Control\PlayList.xaml;
 
 True
 

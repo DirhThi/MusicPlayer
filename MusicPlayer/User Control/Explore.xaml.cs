@@ -16,23 +16,13 @@ using System.Windows.Shapes;
 namespace MusicPlayer.User_Control
 {
     /// <summary>
-    /// Interaction logic for Home.xaml
+    /// Interaction logic for Explore.xaml
     /// </summary>
-    public partial class Home : UserControl
+    public partial class Explore : UserControl
     {
-        public Home()
+        public Explore()
         {
             InitializeComponent();
         }
-
-       /* public string Title
-        {
-            get { return (string)GetValue(TitleProperty); }
-            set { SetValue(TitleProperty, value ); }
-           
-        }
-
-        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register
-            ("Title", typeof(string), typeof(Home));*/
     }
 }

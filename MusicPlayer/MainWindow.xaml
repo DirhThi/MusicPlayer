@@ -5,13 +5,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MusicPlayer"
+        xmlns:uc="clr-namespace:MusicPlayer.User_Control"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="Music Player" Height="700" Width="1000"
         
-        ResizeMode="NoResize"
+        ResizeMode="NoResize" Loaded="Form_Load"
         >
-    <Grid Background="MintCream">
+    <Grid Background="#F8F4EA">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="220"/>
             <ColumnDefinition Width="*"/>
@@ -22,24 +23,26 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="120"/>
         </Grid.RowDefinitions>
+
         
+
         <!-- menu -->
-        <Border Margin="20 60 20 60" Background="Beige" CornerRadius="30" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
-            <StackPanel Margin="0 10 0 0 ">
+        <Border Margin="20 60 20 60" Background="#FFD495" CornerRadius="30" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
+            <StackPanel x:Name="panelMenu" Margin="0 10 0 0 ">
                 <TextBlock Text="Thư viện" Style="{StaticResource menuTitle}"/>
-                <Button  Background="Coral" Foreground="White" Style="{StaticResource menuButton}" >
+                <Button x:Name="btnHome"  Background="Coral" Foreground="White" Style="{StaticResource menuButton}" Click="Home_Click" >
                     <Grid>
                         <TextBlock Text="Trang chủ" Margin="0 0 0 2"  />
                         <Icon:PackIconMaterial  Style="{StaticResource menuButtonIcon}"/>
                     </Grid>
                 </Button>
-                <Button Style="{StaticResource menuButton}">
+                <Button Style="{StaticResource menuButton}" Click="Song_Click">
                     <Grid>
                         <TextBlock Text="Bài hát" Margin="0 0 0 2"  />
                         <Icon:PackIconMaterial  Style="{StaticResource menuButtonIcon}"/>
                     </Grid>
                 </Button>
-                <Button Style="{StaticResource menuButton}">
+                <Button Style="{StaticResource menuButton}" Click="Playlist_Click">
                     <Grid>
                         <TextBlock Text="Playlist" Margin="0 0 0 2"  />
                         <Icon:PackIconMaterial  Style="{StaticResource menuButtonIcon}"/>
@@ -53,91 +56,21 @@
                 </Button>
 
                 <TextBlock Text="Khám phá" Style="{StaticResource menuTitle}"/>
-                <Button   Style="{StaticResource menuButton}" >
+                <Button   Style="{StaticResource menuButton}" Click="Explore_Click" >
                     <Grid>
                         <TextBlock Text="Thịnh hành" Margin="0 0 0 2" />
                         <Icon:PackIconMaterial  Style="{StaticResource menuButtonIcon}" Visibility="Visible"/>
                     </Grid>
                 </Button>
-            </StackPanel>
+                <Separator Margin="20 0"  Background="#22223B"/>
+                
+            </StackPanel >
         </Border>
 
-        <!--dsach bai hat-->
-        <StackPanel Grid.Column="1" Background="White" Margin="20 35 10 10">
-            <TextBlock Text="Trang chủ" Margin="5 0" FontSize="30" Style="{StaticResource menuTitle}"/>
-            <Border CornerRadius="20" Margin="0,10,0,0" Height="400">
-                <Border.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Color="Orange" Offset="0"/>
-                        <GradientStop Color="Coral" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="20" ShadowDepth="5"  Color="Red"/>
-                </Border.Effect>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Danh sách bài hát"  Opacity="0.9" Margin="30 10"  Style="{StaticResource menuTitle}"/>
-                    <Button Margin="0,0,0,0"  Grid.Row="0" Grid.Column="1" Style="{StaticResource favoriteButton}" >
-                        <Icon:PackIconMaterial Height="12" Kind="Shuffle" Visibility="Visible"/>
-                    </Button>
-                    <Button Margin="0,0,0,0"  Grid.Row="0" Grid.Column="2" Style="{StaticResource favoriteButton}" >
-                        <Icon:PackIconMaterial  Kind="Repeat" Visibility="Visible"/>
-                    </Button>
-                </Grid>
-                
-                
-            </Border>
-        </StackPanel>
-    
-        <!--Baihat yeu thich & playlist-->
-        <StackPanel Grid.Column="2" Background="White" Margin="20 35 10 10">
+        <DockPanel x:Name="border"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
             
-            <Button Margin="10,100,20,5" Height="80" Style="{StaticResource favoriteButton}">
-                <Button.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Color="Orange" Offset="0"/>
-                        <GradientStop Color="Coral" Offset="1"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-
-                <StackPanel HorizontalAlignment="Center" Margin="5"
-                    Orientation="Horizontal">
-                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Bài hát yêu thích" Opacity="0.9" Margin="30 10" />
-                    <Icon:PackIconMaterial  Kind="PlayCircle"  Style="{StaticResource menuButtonIcon}" Visibility="Visible"/>
-                </StackPanel>
-            </Button>
-
-            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="Playlist" Opacity="0.9" Margin="30 30 30 0"  Style="{StaticResource menuTitle}"/>
-            <StackPanel CanHorizontallyScroll="True" HorizontalAlignment="Left"  Margin="0 0 0 0" Orientation="Horizontal">
-                
-               
-                <StackPanel HorizontalAlignment="Center" Margin="0,10,0,0" Orientation="Vertical">
-                    <Border CornerRadius="20" Margin="0,0,0,0" Height="100" Width="100">
-                        <Border.Background>
-                            <LinearGradientBrush>
-                                <GradientStop Color="Orange" Offset="0"/>
-                                <GradientStop Color="Coral" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
-                        <Border.Effect>
-                            <DropShadowEffect BlurRadius="20" ShadowDepth="5"  Color="Red"/>
-                        </Border.Effect>
-                        <Icon:PackIconMaterial  Kind="Music"  VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible"/>
-                    </Border>
-                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Bài hát yêu thích" FontSize="14" Opacity="0.9" Margin="30 10" Style="{StaticResource menuTitle}" />
-
-                </StackPanel>
-            </StackPanel>
-        </StackPanel>
+        </DockPanel>
+        <TabControl   x:Name="MainTab" Background="Beige" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
 
         <!--Player-->
         <StackPanel Margin="50 0 0 0" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
@@ -193,7 +126,7 @@
                 
             </StackPanel>
         </Border>
-
+        
 
     </Grid>
 </Window>

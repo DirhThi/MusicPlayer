@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MusicPlayer.User_Control;
+using MusicPlayer.Properties;
+
+
 
 namespace MusicPlayer
 {
@@ -23,6 +27,51 @@ namespace MusicPlayer
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void addUserControl(UserControl uc)
+        {
+            border.Children.Clear();           
+            border.Children.Add(uc);
+        }
+
+
+
+        private void BtnChoose(Button btn)
+        {
+            
+        }
+
+
+        private void Form_Load(object sender, RoutedEventArgs e)
+        {
+            UserControl uc = new Home();
+            border.Children.Add(uc);
+        }
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            UserControl uc = new Home();
+            addUserControl(uc);
+        }
+
+
+        private void Song_Click(object sender, RoutedEventArgs e)
+        {
+            UserControl uc = new ListSong();
+            addUserControl(uc);
+        }
+
+        private void Playlist_Click(object sender, RoutedEventArgs e)
+        {
+            UserControl uc = new PlayList();
+            addUserControl(uc);
+        }
+
+        private void Explore_Click(object sender, RoutedEventArgs e)
+        {
+            UserControl uc = new Explore();
+            addUserControl(uc);
         }
     }
 }

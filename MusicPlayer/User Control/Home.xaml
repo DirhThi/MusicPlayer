@@ -1,36 +1,107 @@
 ﻿<UserControl x:Class="MusicPlayer.User_Control.Home"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             Name="Trangchu"
-              Height="550" Width="780"
-             >
-    <Grid Background="MintCream">
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:local="clr-namespace:MusicPlayer"
+                mc:Ignorable="d"
+                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                Name="Trangchu"
+                Height="540" Width="780"
+                >
+    <Grid Background="#F8F4EA">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="220"/>
+            
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="150"/>
+            
         </Grid.RowDefinitions>
 
-        
 
-        <StackPanel Grid.Column="1" Background="White" Margin="20 40 10 10">
-            <TextBlock Text="Trang chủ" FontSize="30" Style="{StaticResource menuTitle}"/>
-            <Border CornerRadius="20" Margin="0,0,0,0" Height="400">
+        <!--dsach bai hat-->
+        <StackPanel Grid.Column="0" Background="Transparent" Margin="20 20 10 10">
+            <TextBlock Text="Trang chủ" Margin="5 0" FontSize="30" Style="{StaticResource menuTitle}"/>
+            <Border CornerRadius="20" Margin="0,20,0,0" Height="400">
                 <Border.Background>
                     <LinearGradientBrush>
-                        <GradientStop Color="Orange" Offset="0"/>
-                        <GradientStop Color="Coral" Offset="1"/>
+                        <GradientStop Color="Coral" Offset="0"/>
+                        <GradientStop Color="Orange" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="20" ShadowDepth="5"  Color="Red"/>
                 </Border.Effect>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Danh sách bài hát"  Opacity="0.9" Margin="30 10"  Style="{StaticResource menuTitle}"/>
+                    <Button Margin="0,0,0,0"  Grid.Row="0" Grid.Column="1" Style="{StaticResource favoriteButton}" >
+                        <Icon:PackIconMaterial Height="12" Kind="Shuffle" Visibility="Visible"/>
+                    </Button>
+                    <Button Margin="0,0,0,0"  Grid.Row="0" Grid.Column="2" Style="{StaticResource favoriteButton}" >
+                        <Icon:PackIconMaterial  Kind="Repeat" Visibility="Visible"/>
+                    </Button>
+                </Grid>
+
+
             </Border>
         </StackPanel>
+
+        <!--Baihat yeu thich & playlist-->
+        <StackPanel Grid.Column="1" Background="Transparent" Margin="20 35 10 10">
+
+            
+
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="Playlist" Opacity="0.9" Margin="30 55 30 0"  Style="{StaticResource menuTitle}"/>
+            <StackPanel CanHorizontallyScroll="True" HorizontalAlignment="Left"  Margin="0 0 0 0" Orientation="Horizontal">
+
+
+                <StackPanel HorizontalAlignment="Center" Margin="0,10,0,0" Orientation="Vertical">
+                    <Border CornerRadius="20" Margin="0,0,0,0" Height="100" Width="100">
+                        <Border.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Color="Orange" Offset="0"/>
+                                <GradientStop Color="Coral" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20" ShadowDepth="5"  Color="Red"/>
+                        </Border.Effect>
+                        <Icon:PackIconMaterial  Kind="Music"  VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible"/>
+                    </Border>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Bài hát yêu thích" FontSize="14" Opacity="0.9" Margin="30 10" Style="{StaticResource menuTitle}" />
+
+                </StackPanel>
+            </StackPanel>
+            <Border CornerRadius="20" Margin="10,15,20,0" Height="200">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="Coral" Offset="0"/>
+                        <GradientStop Color="Orange" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="5"  Color="Red"/>
+                </Border.Effect>
+                <StackPanel Margin="5"
+                    Orientation="Vertical">
+                    <TextBlock HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" Text="Lời bài hát"  Opacity="0.8" Margin="20 10"  Style="{StaticResource menuTitle}"/>
+                </StackPanel>
+            </Border>
+            
+        </StackPanel>
+
 
 
     </Grid>
