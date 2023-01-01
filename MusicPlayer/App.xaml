@@ -18,7 +18,6 @@
 
             <Style x:Key="menuButton" TargetType="Button">
                 <Setter Property="Background" Value="Transparent"/>
-
                 <Setter Property="Foreground" Value="#243763"/>
                 <Setter Property="Height" Value="50"/>
                 <Setter Property="FontWeight" Value="Bold"/>
@@ -39,7 +38,6 @@
                     <Trigger Property="IsMouseOver" Value="True">
                        <Setter Property="Background" Value="Transparent"/>
                         <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="BorderBrush" Value="Black"/>
                         <Setter Property="Effect"  >
                             <Setter.Value>
                                 <DropShadowEffect ShadowDepth="1" />
@@ -47,7 +45,35 @@
                         </Setter>
                         <Setter Property="Tag" Value="Visible"/>
                     </Trigger>
+                    
                 </Style.Triggers>
+            </Style>
+
+            <Style x:Key="menuButtonChoose" TargetType="Button">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Height" Value="50"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Margin" Value=" 20 3 10 3"/>
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter Property="Effect"  >
+                    <Setter.Value>
+                        <DropShadowEffect Color="Wheat" BlurRadius="5" ShadowDepth="7" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Tag" Value="Visible"/>
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="25">
+                                <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="30 0 0 0"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                
             </Style>
 
             <Style x:Key="favoriteButton" TargetType="Button">
@@ -57,14 +83,14 @@
                 <Setter Property="Height" Value="50"/>
                 <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="FontSize" Value="22"/>
-                <Setter Property="Margin" Value=" 20 3 10 3"/>
+              
                 <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
 
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" CornerRadius="25">
-                                <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="30 0 0 0"/>
+                                <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0"/>
                             </Border>
                         </ControlTemplate>
                     </Setter.Value>

@@ -68,18 +68,18 @@
 
 
                 <StackPanel HorizontalAlignment="Center" Margin="0,10,0,0" Orientation="Vertical">
-                    <Border CornerRadius="20" Margin="0,0,0,0" Height="100" Width="100">
-                        <Border.Background>
+                    <Button Style="{StaticResource favoriteButton}" Margin="0,0,0,0" Height="100" Width="100">
+                        <Button.Background>
                             <LinearGradientBrush>
                                 <GradientStop Color="Orange" Offset="0"/>
                                 <GradientStop Color="Coral" Offset="1"/>
                             </LinearGradientBrush>
-                        </Border.Background>
-                        <Border.Effect>
+                        </Button.Background>
+                        <Button.Effect>
                             <DropShadowEffect BlurRadius="20" ShadowDepth="5"  Color="Red"/>
-                        </Border.Effect>
+                        </Button.Effect>
                         <Icon:PackIconMaterial  Kind="Music"  VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible"/>
-                    </Border>
+                    </Button>
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Bài hát yêu thích" FontSize="14" Opacity="0.9" Margin="30 10" Style="{StaticResource menuTitle}" />
 
                 </StackPanel>
