@@ -120,7 +120,6 @@ G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.exe
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.pdb
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\Home.baml
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\Home.g.cs
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.csprojAssemblyReference.cache
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\Explore.g.cs
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\ListSong.g.cs
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\PlayList.g.cs

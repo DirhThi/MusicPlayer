@@ -25,14 +25,13 @@ namespace MusicPlayer.User_Control
             InitializeComponent();
         }
 
-       /* public string Title
+        private void Home_Load(object sender, RoutedEventArgs e)
         {
-            get { return (string)GetValue(TitleProperty); }
-            set { SetValue(TitleProperty, value ); }
-           
+            lsbTopSongs.ItemsSource = new List<string>() { "", "", "", "", "", "", "", "", "", "" };
+
+            
         }
 
-        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register
-            ("Title", typeof(string), typeof(Home));*/
+       
     }
 }

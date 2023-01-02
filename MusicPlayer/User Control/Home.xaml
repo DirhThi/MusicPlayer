@@ -10,15 +10,15 @@
                 Name="Trangchu"
                 Height="540" Width="780"
                 >
-    <Grid Background="#F8F4EA">
+    <Grid Background="#F8F4EA" Loaded="Home_Load">
         <Grid.ColumnDefinitions>
-            
+
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            
+
         </Grid.RowDefinitions>
 
 
@@ -52,39 +52,57 @@
                     <Button Margin="0,0,0,0"  Grid.Row="0" Grid.Column="2" Style="{StaticResource favoriteButton}" >
                         <Icon:PackIconMaterial  Kind="Repeat" Visibility="Visible"/>
                     </Button>
+                    <Grid Margin="15 0 15 20" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+                        <ListBox ScrollViewer.VerticalScrollBarVisibility="Hidden" x:Name="lsbTopSongs" HorizontalContentAlignment="Stretch">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListBoxItem}">
+                                    <Setter Property="Focusable" Value="False"/>
+
+                                </Style>
+
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Margin="30,0,5,0" Grid.Row="0" Grid.Column="1"  Style="{StaticResource favoriteButton}" >
+                                        <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Stretch"  Orientation="Horizontal">
+                                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="01" FontSize="12" FontWeight="Medium" Opacity="0.9" Margin="0 10" />
+                                            <StackPanel Width="200" Margin="15 0"  VerticalAlignment="Center" HorizontalAlignment="Left"  Orientation="Vertical">
+                                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="0.9" Text="Bài hát yêu thích" Margin="-1" FontSize="14"  />
+                                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="0.9" Text="Bài hát yêu thích" Margin="-1" FontWeight="Medium" FontSize="12"   />
+                                            </StackPanel>
+                                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="03:00" FontSize="12" FontWeight="Medium" Opacity="0.9" Margin="0 10" />
+
+                                        </StackPanel>
+                                    </Button>
+
+
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
                 </Grid>
+
 
 
             </Border>
         </StackPanel>
 
         <!--Baihat yeu thich & playlist-->
-        <StackPanel Grid.Column="1" Background="Transparent" Margin="20 35 10 10">
+        <StackPanel HorizontalAlignment="Center" Grid.Column="1" Background="Transparent" Margin="9.6,35,10,10" Width="370">
 
+
+            <Expander  Margin="10,55,20,20"  Header="Playlist"  Style="{StaticResource playlistExpander}"  Background="Transparent"
+            HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <StackPanel>
+                        <Border CornerRadius="20" Background="Beige" Height="360" Width="320">
+
+                        </Border>
+                    </StackPanel>
+                </Expander>
+            
             
 
-            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="Playlist" Opacity="0.9" Margin="30 55 30 0"  Style="{StaticResource menuTitle}"/>
-            <StackPanel CanHorizontallyScroll="True" HorizontalAlignment="Left"  Margin="0 0 0 0" Orientation="Horizontal">
-
-
-                <StackPanel HorizontalAlignment="Center" Margin="0,10,0,0" Orientation="Vertical">
-                    <Button Style="{StaticResource favoriteButton}" Margin="0,0,0,0" Height="100" Width="100">
-                        <Button.Background>
-                            <LinearGradientBrush>
-                                <GradientStop Color="Orange" Offset="0"/>
-                                <GradientStop Color="Coral" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Button.Background>
-                        <Button.Effect>
-                            <DropShadowEffect BlurRadius="20" ShadowDepth="5"  Color="Red"/>
-                        </Button.Effect>
-                        <Icon:PackIconMaterial  Kind="Music"  VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible"/>
-                    </Button>
-                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Bài hát yêu thích" FontSize="14" Opacity="0.9" Margin="30 10" Style="{StaticResource menuTitle}" />
-
-                </StackPanel>
-            </StackPanel>
-            <Border CornerRadius="20" Margin="10,15,20,0" Height="200">
+            <Border CornerRadius="20" Margin="10,55,20,0" Height="280">
                 <Border.Background>
                     <LinearGradientBrush>
                         <GradientStop Color="Coral" Offset="0"/>
@@ -99,7 +117,7 @@
                     <TextBlock HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" Text="Lời bài hát"  Opacity="0.8" Margin="20 10"  Style="{StaticResource menuTitle}"/>
                 </StackPanel>
             </Border>
-            
+
         </StackPanel>
 
 

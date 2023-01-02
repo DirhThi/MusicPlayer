@@ -8,15 +8,16 @@
                 mc:Ignorable="d"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                 Name="dsBaiHat"
-                Height="540" Width="780"
+                Height="540" Width="780" 
                 >
     <Grid Background="#F8F4EA">
         <Grid.ColumnDefinitions>
 
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
@@ -24,8 +25,62 @@
 
         <!--dsach bai hat-->
         <StackPanel Grid.Column="0" Background="Transparent" Margin="20 20 10 10">
-            <TextBlock Text="Tất cả bài hát" Margin="5 0" FontSize="30" Style="{StaticResource menuTitle}"/>
+            <TextBlock Text="Bài hát" Margin="5 0" FontSize="30" Style="{StaticResource menuTitle}"/>
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Background="Transparent" Margin="40 30 0 0">
+                <StackPanel Orientation="Vertical" Grid.Column="0" Background="Transparent" >
+                    <TextBlock Text="Tất cả bài hát" Opacity="0.9"  Margin="0 0" Style="{StaticResource menuTitle}"/>
+                    <TextBlock  Text="17 Bài hát" FontSize="12" FontStyle="Italic" FontWeight="Regular" Opacity="0.9" />
+                </StackPanel>
+                <Button  Margin="350 0" HorizontalAlignment="Right"  Style="{StaticResource menuButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                        <TextBlock Text="Thêm bài hát"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
         </StackPanel>
+
+        <DataGrid Margin="20 0 40 40" Background="Coral" Grid.Row="1"   x:Name="gridSong"  >
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Header="C" CanUserResize="False" Width="auto" >
+                    <DataGridCheckBoxColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <CheckBox />
+                        </DataTemplate>
+                    </DataGridCheckBoxColumn.HeaderTemplate>
+                </DataGridCheckBoxColumn>
+                <DataGridTextColumn Header="" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
+                <DataGridTemplateColumn MinWidth="200"  Header="Tên bài hát" IsReadOnly="True" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="{Binding BgColor}">
+                                    <TextBlock Text="{Binding Character}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>
+                                </Border>
+
+                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn MinWidth="150"  Header="Tên ca sĩ" Binding="{Binding Position}" IsReadOnly="True" Width="*"/>
+                <DataGridTextColumn Width="100"  Header="Độ dài" Binding="{Binding Email}" IsReadOnly="True" />
+                <DataGridTemplateColumn Header="Tùy chọn" IsReadOnly="True" Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Style="{StaticResource favoriteButton}">
+                                    <Icon:PackIconMaterial Kind="PencilOutline" />
+                                </Button>
+                                <Button Margin="5 0 0 0" Style="{StaticResource favoriteButton}">
+                                    <Icon:PackIconMaterial Kind="DeleteOutline" />
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>
 

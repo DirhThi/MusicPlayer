@@ -32,19 +32,20 @@ namespace MusicPlayer
         {
             InitializeComponent();
         }
-
-        private void addUserControl(UserControl uc)
-        {
-            border.Children.Clear();           
-            border.Children.Add(uc);
-        }
-
         private void Form_Load(object sender, RoutedEventArgs e)
         {
             UserControl uc = new Home();
             border.Children.Add(uc);
             btnHome.Style = (Style)Application.Current.Resources["menuButtonChoose"];
+            
+            
         }
+
+        private void addUserControl(UserControl uc)
+        {
+            border.Children.Clear();           
+            border.Children.Add(uc);
+        }        
 
         private void BtnChoose(Button bt)
         {

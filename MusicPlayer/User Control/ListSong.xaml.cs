@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
 
 namespace MusicPlayer.User_Control
 {
@@ -23,6 +24,12 @@ namespace MusicPlayer.User_Control
         public ListSong()
         {
             InitializeComponent();
+    
+           
+
+           
         }
+
     }
+    
 }

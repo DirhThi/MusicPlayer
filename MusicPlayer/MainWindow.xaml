@@ -10,7 +10,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="Music Player" Height="700" Width="1000"
         
-        ResizeMode="NoResize" Loaded="Form_Load" Icon="Logo.png"
+        ResizeMode="CanMinimize" Loaded="Form_Load" Icon="Logo.png" WindowStartupLocation="CenterScreen"
         >
     <Grid Background="#F8F4EA">
         <Grid.ColumnDefinitions>
@@ -62,14 +62,15 @@
                         <Icon:PackIconMaterial  Style="{StaticResource menuButtonIcon}" Visibility="Visible"/>
                     </Grid>
                 </Button>
-                <Separator Margin="20 0"  Background="#22223B"/>
+                <Separator Margin="20 10"  Background="#22223B"/>
                 
             </StackPanel >
         </Border>
-
+        
+        <!--UserControls Display-->
         <DockPanel x:Name="border"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
-            
         </DockPanel>
+        
         <TabControl   x:Name="MainTab" Background="Beige" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
 
         <!--Player-->
