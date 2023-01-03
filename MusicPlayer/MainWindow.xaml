@@ -30,25 +30,25 @@
         <Border Margin="20 60 20 60" Background="#FFD495" CornerRadius="30" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
             <StackPanel x:Name="panelMenu" Margin="0 10 0 0 ">
                 <TextBlock Text="Thư viện" Style="{StaticResource menuTitle}"/>
-                <Button x:Name="btnHome"  Background="Coral"  Style="{StaticResource menuButton}" Click="Home_Click" >
+                <Button x:Name="btnHome"  Background="Coral"  Style="{StaticResource menuButton}" Click="Home_Click" Cursor="Hand" >
                     <Grid>
                         <TextBlock Text="Trang chủ" Margin="0 0 0 2"  />
                         <Icon:PackIconMaterial  Style="{StaticResource menuButtonIcon}"/>
                     </Grid>
                 </Button>
-                <Button x:Name="btnSong" Style="{StaticResource menuButton}" Click="Song_Click">
+                <Button  Cursor="Hand" x:Name="btnSong" Style="{StaticResource menuButton}" Click="Song_Click">
                     <Grid>
                         <TextBlock Text="Bài hát" Margin="0 0 0 2"  />
                         <Icon:PackIconMaterial  Style="{StaticResource menuButtonIcon}"/>
                     </Grid>
                 </Button>
-                <Button x:Name="btnPlaylist" Style="{StaticResource menuButton}" Click="Playlist_Click">
+                <Button  Cursor="Hand" x:Name="btnPlaylist" Style="{StaticResource menuButton}" Click="Playlist_Click">
                     <Grid>
                         <TextBlock Text="Playlist" Margin="0 0 0 2"  />
                         <Icon:PackIconMaterial  Style="{StaticResource menuButtonIcon}"/>
                     </Grid>
                 </Button>
-                <Button x:Name="btnFavorite"  Style="{StaticResource menuButton}">
+                <Button  Cursor="Hand" x:Name="btnFavorite"  Style="{StaticResource menuButton}">
                     <Grid>
                         <TextBlock Text="Yêu thích" Margin="0 0 0 2" HorizontalAlignment="Left"  />
                         <Icon:PackIconMaterial  Style="{StaticResource menuButtonIcon}"/>
@@ -56,7 +56,7 @@
                 </Button>
 
                 <TextBlock Text="Khám phá" Style="{StaticResource menuTitle}"/>
-                <Button x:Name="btnExplore"   Style="{StaticResource menuButton}" Click="Explore_Click" >
+                <Button  Cursor="Hand" x:Name="btnExplore"   Style="{StaticResource menuButton}" Click="Explore_Click" >
                     <Grid>
                         <TextBlock Text="Thịnh hành" Margin="0 0 0 2" />
                         <Icon:PackIconMaterial  Style="{StaticResource menuButtonIcon}" Visibility="Visible"/>
@@ -104,24 +104,25 @@
                     <TextBlock Text="Ca sĩ" FontSize="14" Margin="0 0" />
                 </StackPanel>
                 
-                <Button Margin="20,0,15,0"  Grid.Row="0" Grid.Column="1" Style="{StaticResource favoriteButton}" >
-                    <Icon:PackIconMaterial Height="12" Kind="SkipPrevious" Visibility="Visible"/>
+                <Button Margin="20,0,15,0"  Grid.Row="0" Grid.Column="1" Style="{StaticResource favoriteButton}" Cursor="Hand" >
+                    <Icon:PackIconMaterial Height="12" Kind="SkipPrevious" Visibility="Visible" Cursor="Hand"/>
                 </Button>
-                <Button Margin="15,0,15,0"  Grid.Row="0" Grid.Column="1" Style="{StaticResource favoriteButton}" >
+                <Button Margin="15,0,15,0"  Grid.Row="0" Grid.Column="1" Style="{StaticResource favoriteButton}" Cursor="Hand" >
                     <Icon:PackIconMaterial Height="12" Kind="Pause" Visibility="Visible"/>
                 </Button>
-                <Button Margin="15,0,15,0" Grid.Row="0" Grid.Column="1" Style="{StaticResource favoriteButton}" >
+                <Button Margin="15,0,15,0" Grid.Row="0" Grid.Column="1" Style="{StaticResource favoriteButton}" Cursor="Hand" >
                     <Icon:PackIconMaterial Height="12" Kind="SkipNext" Visibility="Visible"/>
                 </Button>
 
                 <Slider Margin="15 0 15 0"
                         x:Name="slider" 
+                        
                         IsSelectionRangeEnabled="True" 
                         VerticalAlignment="Center" 
                         Value="5" Width="320"
-                        SelectionEnd="{Binding ElementName=slider,Path=Value}"/>
+                        SelectionEnd="{Binding ElementName=slider,Path=Value}" Cursor="Hand"/>
 
-                <Button Margin="15,0,15,0" Grid.Row="0" Grid.Column="1" Style="{StaticResource favoriteButton}" >
+                <Button Margin="15,0,15,0" Grid.Row="0" Grid.Column="1" Style="{StaticResource favoriteButton}" Cursor="Hand" >
                     <Icon:PackIconMaterial Height="12" Kind="VolumeHigh" Visibility="Visible"/>
                 </Button>
                 

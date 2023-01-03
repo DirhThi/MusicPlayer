@@ -31,7 +31,13 @@
                     <TextBlock Text="Tất cả bài hát" Opacity="0.9"  Margin="0 0" Style="{StaticResource menuTitle}"/>
                     <TextBlock  Text="17 Bài hát" FontSize="12" FontStyle="Italic" FontWeight="Regular" Opacity="0.9" />
                 </StackPanel>
-                <Button  Margin="350 0" HorizontalAlignment="Right"  Style="{StaticResource menuButton}">
+                <Button Cursor="Hand"  Margin="200 0 0 0" HorizontalAlignment="Right"  Style="{StaticResource menuButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Icon:PackIconMaterial Kind="Play" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                        <TextBlock Text="Phát tất cả"/>
+                    </StackPanel>
+                </Button>
+                <Button Cursor="Hand" Margin="0 0" HorizontalAlignment="Right"  Style="{StaticResource menuButton}">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
                         <TextBlock Text="Thêm bài hát"/>
@@ -40,39 +46,36 @@
             </StackPanel>
         </StackPanel>
 
-        <DataGrid Margin="20 0 40 40" Background="Coral" Grid.Row="1"   x:Name="gridSong"  >
+
+
+        <DataGrid  RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}"  Style="{DynamicResource DataGridStyle1}"
+            Margin="20 0 40 30"
+                   Grid.Row="1"   
+                   x:Name="gridSong"
+                   
+                            Foreground="#22223B"
+                             >
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn Header="C" CanUserResize="False" Width="auto" >
+                <DataGridCheckBoxColumn  Header="" CanUserResize="False" Width="auto" >
                     <DataGridCheckBoxColumn.HeaderTemplate>
                         <DataTemplate>
-                            <CheckBox />
+                            <CheckBox Cursor="Hand" />
                         </DataTemplate>
                     </DataGridCheckBoxColumn.HeaderTemplate>
                 </DataGridCheckBoxColumn>
-                <DataGridTextColumn Header="" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
-                <DataGridTemplateColumn MinWidth="200"  Header="Tên bài hát" IsReadOnly="True" Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="{Binding BgColor}">
-                                    <TextBlock Text="{Binding Character}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>
-                                </Border>
+                <DataGridTextColumn  Header="" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
+                <DataGridTextColumn MinWidth="150"  Header="Tên bài hát" Binding="{Binding nameSong}" IsReadOnly="True" Width="*"/>
 
-                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTextColumn MinWidth="150"  Header="Tên ca sĩ" Binding="{Binding Position}" IsReadOnly="True" Width="*"/>
-                <DataGridTextColumn Width="100"  Header="Độ dài" Binding="{Binding Email}" IsReadOnly="True" />
+                <DataGridTextColumn MinWidth="150"  Header="Tên ca sĩ" Binding="{Binding nameArtis}" IsReadOnly="True" Width="*"/>
+                <DataGridTextColumn Width="100"  Header="Độ dài" Binding="{Binding Time}" IsReadOnly="True" />
                 <DataGridTemplateColumn Header="Tùy chọn" IsReadOnly="True" Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Style="{StaticResource favoriteButton}">
-                                    <Icon:PackIconMaterial Kind="PencilOutline" />
+                            <StackPanel  Orientation="Horizontal">
+                                <Button Cursor="Hand" Margin="10 0 0 0" Style="{StaticResource favoriteButton}">
+                                    <Icon:PackIconMaterial Kind="PlusBoxOutline" />
                                 </Button>
-                                <Button Margin="5 0 0 0" Style="{StaticResource favoriteButton}">
+                                <Button Cursor="Hand" Margin="10 0 0 0" Style="{StaticResource favoriteButton}">
                                     <Icon:PackIconMaterial Kind="DeleteOutline" />
                                 </Button>
                             </StackPanel>

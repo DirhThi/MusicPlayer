@@ -46,10 +46,10 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Danh sách bài hát"  Opacity="0.9" Margin="30 10"  Style="{StaticResource menuTitle}"/>
-                    <Button Margin="0,0,0,0"  Grid.Row="0" Grid.Column="1" Style="{StaticResource favoriteButton}" >
-                        <Icon:PackIconMaterial Height="12" Kind="Shuffle" Visibility="Visible"/>
+                    <Button Margin="10,0,0,0" Height="30" Width="30" Cursor="Hand" Grid.Row="0" Grid.Column="1" Style="{StaticResource favoriteButton}" >
+                        <Icon:PackIconMaterial  Height="12" Kind="Shuffle" Visibility="Visible"/>
                     </Button>
-                    <Button Margin="0,0,0,0"  Grid.Row="0" Grid.Column="2" Style="{StaticResource favoriteButton}" >
+                    <Button  Height="30" Width="30" Margin="0,0,0,0" Cursor="Hand"  Grid.Row="0" Grid.Column="2" Style="{StaticResource favoriteButton}" >
                         <Icon:PackIconMaterial  Kind="Repeat" Visibility="Visible"/>
                     </Button>
                     <Grid Margin="15 0 15 20" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
@@ -63,12 +63,12 @@
                             </ListBox.ItemContainerStyle>
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <Button Margin="30,0,5,0" Grid.Row="0" Grid.Column="1"  Style="{StaticResource favoriteButton}" >
+                                    <Button Cursor="Hand" Margin="30,0,5,0" Grid.Row="0" Grid.Column="1"  Style="{StaticResource favoriteButton}" >
                                         <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Stretch"  Orientation="Horizontal">
                                             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="01" FontSize="12" FontWeight="Medium" Opacity="0.9" Margin="0 10" />
-                                            <StackPanel Width="200" Margin="15 0"  VerticalAlignment="Center" HorizontalAlignment="Left"  Orientation="Vertical">
-                                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="0.9" Text="Bài hát yêu thích" Margin="-1" FontSize="14"  />
-                                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="0.9" Text="Bài hát yêu thích" Margin="-1" FontWeight="Medium" FontSize="12"   />
+                                            <StackPanel Width="200" Margin="20 0"  VerticalAlignment="Center" HorizontalAlignment="Left"  Orientation="Vertical">
+                                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Opacity="0.9" Text="Chuyện tình con mèo" FontWeight="DemiBold" Margin="0 -1" FontSize="14"  />
+                                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Opacity="0.9" Text="Justin" Margin="5 -1" FontWeight="SemiBold" FontSize="12"   />
                                             </StackPanel>
                                             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="03:00" FontSize="12" FontWeight="Medium" Opacity="0.9" Margin="0 10" />
 
@@ -92,7 +92,7 @@
 
 
             <Expander  Margin="10,55,20,20"  Header="Playlist"  Style="{StaticResource playlistExpander}"  Background="Transparent"
-            HorizontalAlignment="Left" VerticalAlignment="Center">
+            HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand">
                     <StackPanel>
                         <Border CornerRadius="20" Background="Beige" Height="360" Width="320">
 
