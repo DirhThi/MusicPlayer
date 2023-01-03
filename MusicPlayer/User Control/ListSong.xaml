@@ -29,7 +29,7 @@
             <StackPanel Orientation="Horizontal" Grid.Column="0" Background="Transparent" Margin="40 30 0 0">
                 <StackPanel Orientation="Vertical" Grid.Column="0" Background="Transparent" >
                     <TextBlock Text="Tất cả bài hát" Opacity="0.9"  Margin="0 0" Style="{StaticResource menuTitle}"/>
-                    <TextBlock  Text="17 Bài hát" FontSize="12" FontStyle="Italic" FontWeight="Regular" Opacity="0.9" />
+                    <TextBlock x:Name="countSong" Text="00 Bài hát" FontSize="12" FontStyle="Italic" FontWeight="Regular" Opacity="0.9" />
                 </StackPanel>
                 <Button Cursor="Hand"  Margin="200 0 0 0" HorizontalAlignment="Right"  Style="{StaticResource menuButton}">
                     <StackPanel Orientation="Horizontal">

@@ -13,18 +13,107 @@
     <Grid Background="#F8F4EA">
         <Grid.ColumnDefinitions>
 
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
 
 
-        <!--dsach bai hat-->
         <StackPanel Grid.Column="0" Background="Transparent" Margin="20 20 10 10">
-            <TextBlock Text="PlayList" Margin="5 0" FontSize="30" Style="{StaticResource menuTitle}"/>
+            <TextBlock Text="Playlist" Margin="5 0" FontSize="30" Style="{StaticResource menuTitle}"/>
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Background="Transparent" Margin="40 30 0 0">
+                <StackPanel Orientation="Vertical" Grid.Column="0" Background="Transparent" >
+                    <TextBlock Text="Tất cả Playlist" Opacity="0.9"  Margin="0 0" Style="{StaticResource menuTitle}"/>
+                    <TextBlock x:Name="countPlaylist" Text="00 Playlist" FontSize="12" FontStyle="Italic" FontWeight="Regular" Opacity="0.9" />
+                </StackPanel>
+
+                <Button Cursor="Hand" Margin="350 0" HorizontalAlignment="Right"  Style="{StaticResource menuButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                        <TextBlock Text="Thêm Playlist"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
         </StackPanel>
+
+        <ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto">
+            <WrapPanel  ItemHeight="auto" ItemWidth="auto" x:Name="panelPlaylist" Orientation="Horizontal" Background="Transparent"  Margin="20 15 40 30" >
+                <ItemsControl Name="icPlaylist">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Width="120" Margin="40,0,10,10" HorizontalAlignment="Center" Orientation="Vertical">
+                                <Button Width="auto" Height="auto" Margin="0,0" Cursor="Hand"  Grid.Row="0" Grid.Column="1"  Style="{StaticResource playlistButton}" >
+                                    <Border CornerRadius="20" Margin="0,0,0,0" Width="120" Height="120" >
+                                        <Border.Background>
+                                            <LinearGradientBrush>
+                                                <GradientStop Color="Coral" Offset="0"/>
+                                                <GradientStop Color="Orange" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <Border.Effect>
+                                            <DropShadowEffect BlurRadius="20" ShadowDepth="5"  Color="Red"/>
+                                        </Border.Effect>
+                                        <Image Source="/MusicPlayer;component/Image/Music.png" Margin="20" >
+                                            
+                                        </Image>
+                                    </Border>
+                                </Button>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5 10 -5 10" RenderTransformOrigin="0.5,0.5" >
+
+                                    <TextBlock  MaxWidth="90" HorizontalAlignment="Left"  FontSize="14" FontWeight="Medium" Text="{Binding Title}"/>
+                                    <materialDesign:PopupBox 
+                                            PlacementMode="RightAndAlignBottomEdges">
+                                        <materialDesign:PopupBox.ToggleContent>
+                                            <materialDesign:PackIcon Kind="DotsVertical" />
+                                        </materialDesign:PopupBox.ToggleContent>
+                                        
+
+                                        <materialDesign:PopupBox.PopupContent   >
+                                            
+                                            <Border Margin="0 -8"  Background="#e9c46a"  >
+                                                <StackPanel HorizontalAlignment="Center"  Orientation="Vertical">
+
+
+                                                    <Button Cursor="Hand"  Background="Transparent" Height="30" Width="30"  Margin="0 0 0 0 " ToolTip="Xóa Playlist">
+                                                        <materialDesign:PackIcon Margin="-9 -15 -15 9 "   Kind="Delete" />
+                                                    </Button>
+
+                                                    <Button  Cursor="Hand"  Background="Transparent" Height="30" Width="30"  ToolTip="Thêm bài hát vào Play list">
+                                                        <materialDesign:PackIcon Margin="-9 -15 -15 9 "  Kind="PlusBox" />
+                                                    </Button>
+
+                                                    <Button  Cursor="Hand"  Background="Transparent" Height="30" Width="30"    ToolTip="Phát Playlist">
+                                                        <materialDesign:PackIcon Margin="-9 -15 -15 9 "   Kind="Play" />
+                                                    </Button>
+                                                </StackPanel>
+                                            </Border>
+                                        </materialDesign:PopupBox.PopupContent>
+                                        
+                                    </materialDesign:PopupBox>
+
+
+
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </WrapPanel>
+        </ScrollViewer>
+
+
+
+
+
+
     </Grid>
 </UserControl>

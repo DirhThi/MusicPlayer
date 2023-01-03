@@ -43,6 +43,7 @@ namespace MusicPlayer.User_Control
 
             gridSong.ItemsSource = items;
 
+            countSong.Text = gridSong.Items.Count + " Bài hát";
 
 
         }

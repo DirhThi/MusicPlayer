@@ -22,7 +22,37 @@ namespace MusicPlayer.User_Control
     {
         public PlayList()
         {
+          
             InitializeComponent();
+
+            List<Playlist> items = new List<Playlist>();
+            items.Add(new Playlist() { Title = "Thứ 2 tồi tệ"  });
+            items.Add(new Playlist() { Title = "Nhạc vui vẻ " });
+            items.Add(new Playlist() { Title = "Nhạc buồn xĩu" });
+            items.Add(new Playlist() { Title = "Nhạc thất tình" });
+            items.Add(new Playlist() { Title = "Thứ 2 tồi tệ" });
+            items.Add(new Playlist() { Title = "Nhạc vui vẻ " });
+            items.Add(new Playlist() { Title = "Nhạc buồn xĩu" });
+            items.Add(new Playlist() { Title = "Nhạc thất tình" });
+            items.Add(new Playlist() { Title = "Learn C#" });
+            items.Add(new Playlist() { Title = "Wash the car" }); 
+            items.Add(new Playlist() { Title = "Learn C#" });
+            
+            icPlaylist.ItemsSource = items;
+
+
+            countPlaylist.Text = items.Count + " Playlist";
+
+
+
+
+        }
+
+        public class Playlist
+        {
+            
+            public string Title { get; set; }
+           
         }
     }
 }
