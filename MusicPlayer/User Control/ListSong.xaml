@@ -37,7 +37,7 @@
                         <TextBlock Text="Phát tất cả"/>
                     </StackPanel>
                 </Button>
-                <Button Cursor="Hand" Margin="0 0" HorizontalAlignment="Right"  Style="{StaticResource menuButton}">
+                <Button Cursor="Hand" Margin="0 0" HorizontalAlignment="Right" Click="AddSong_Click"  Style="{StaticResource menuButton}">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
                         <TextBlock Text="Thêm bài hát"/>

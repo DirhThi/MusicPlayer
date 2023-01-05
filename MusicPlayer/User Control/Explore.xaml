@@ -11,20 +11,67 @@
                 Height="540" Width="780"
                 >
     <Grid Background="#F8F4EA">
-        <Grid.ColumnDefinitions>
+        
 
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+        <!--dsach bai hat-->
+        
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition/>
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
 
 
-        <!--dsach bai hat-->
-        <StackPanel Grid.Column="0" Background="Transparent" Margin="20 20 10 10">
-            <TextBlock Text="Khám phá" Margin="5 0" FontSize="30" Style="{StaticResource menuTitle}"/>
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="3" Background="Transparent" Margin="20 20 10 10">
+          
+                <TextBlock Text="Khám phá" Margin="5 0" FontSize="30" Style="{StaticResource menuTitle}"/>
+           
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Background="Transparent" Margin="40 30 0 0">
+                <StackPanel Orientation="Vertical" Grid.Column="0" Background="Transparent" >
+                    <TextBlock Text="Bảng xếp hạng âm nhạc" Opacity="0.9"  Margin="0 0" Style="{StaticResource menuTitle}"/>
+                    <TextBlock x:Name="country" Text="Top 100 " FontSize="12" FontStyle="Italic" FontWeight="Regular" Opacity="0.9" />
+                </StackPanel>
+
+                <Button Cursor="Hand" Margin="250 0" HorizontalAlignment="Right"  Style="{StaticResource menuButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Icon:PackIconMaterial Kind="Play" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                        <TextBlock Text="Phát tất cả"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
         </StackPanel>
+
+        <Grid  Grid.Column="1" Grid.Row="1">
+            <TabControl x:Name="tabcontrolcontry"  Margin="10 0 10 10" BorderThickness="0" Background="LightGray">
+
+
+
+                <TabItem Style="{StaticResource tabbarExplore }"  Header="Việt Nam">
+                    <Grid Margin="10 10" Background="Red">
+                        
+                    </Grid>
+                    
+                </TabItem>
+                <TabItem Style="{StaticResource tabbarExplore }" Header="Âu Mỹ">
+                    <Grid  Margin="10 10" Background="Blue">
+
+                    </Grid>
+                </TabItem>
+                <TabItem Style="{StaticResource tabbarExplore }" Header="Hàn Quốc" >
+                        <Grid  Margin="10 10" Background="Purple">
+
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+
     </Grid>
 </UserControl>

@@ -98,5 +98,10 @@ namespace MusicPlayer
             UserControl uc = new Explore();
             addUserControl(uc);
         }
+
+        private void btnPlay_Click(object sender, RoutedEventArgs e)
+        {
+            playmusic.Play();
+        }
     }
 }

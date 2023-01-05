@@ -11,8 +11,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using Microsoft.Win32;
+using System.IO;
+
+
+
 
 namespace MusicPlayer.User_Control
 {
@@ -44,10 +48,32 @@ namespace MusicPlayer.User_Control
             gridSong.ItemsSource = items;
 
             countSong.Text = gridSong.Items.Count + " Bài hát";
-
+            
+           
 
         }
 
+        private void AddSong_Click(object sender, RoutedEventArgs e)
+        {
+
+           OpenFileDialog dlg = new OpenFileDialog();
+
+            
+            dlg.Filter = "All Media Files|*.mp3;*.mp4";
+            dlg.Multiselect = true;
+            if (dlg.ShowDialog()== true)
+            {
+                foreach (String fileName in dlg.FileNames)
+                {
+
+                    var currentDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+                    string projectDirectory = currentDirectory.Parent.Parent.Parent.FullName;
+                    string destinationDirectory = projectDirectory+"\\MusicPlayer\\AllSongs\\";
+                     File.Copy(fileName, destinationDirectory + Path.GetFileName(fileName));
+                }
+            }
+
+        }
     }
 
     public class Song
