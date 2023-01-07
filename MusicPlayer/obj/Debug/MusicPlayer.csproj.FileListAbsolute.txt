@@ -132,3 +132,6 @@ G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\Id3Lib.dll
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\Mp3Lib.dll
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\Id3Lib.pdb
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\Mp3Lib.pdb
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\Interop.WMPLib.dll
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.csproj.ResolveComReference.cache
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\GeneratedInternalTypeHelper.g.cs

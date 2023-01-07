@@ -28,24 +28,9 @@ namespace MusicPlayer.User_Control
         public ListSong()
         {
             InitializeComponent();
-            List<Song> items = new List<Song>();
-            items.Add(new Song() { Number = 1, nameSong = "Chuyện tình con mèo", nameArtis = "Con mèo con", Time = "03:00" });
-            items.Add(new Song() { Number = 2, nameSong = "Chuyện tình con mèo", nameArtis = "Con mèo con", Time = "03:00" });
-            items.Add(new Song() { Number = 3, nameSong = "Chuyện tình con mèo", nameArtis = "Con mèo con", Time = "03:00" });
-            items.Add(new Song() { Number = 4, nameSong = "Chuyện tình con mèo", nameArtis = "Con mèo con", Time = "03:00" });
-            items.Add(new Song() { Number = 5, nameSong = "Chuyện tình con mèo", nameArtis = "Con mèo con", Time = "03:00" });
-            items.Add(new Song() { Number = 6, nameSong = "Chuyện tình con mèo", nameArtis = "Con mèo con", Time = "03:00" });
-            items.Add(new Song() { Number = 7, nameSong = "Chuyện tình con mèo", nameArtis = "Con mèo con", Time = "03:00" });
-            items.Add(new Song() { Number = 8, nameSong = "Chuyện tình con mèo", nameArtis = "Con mèo con", Time = "03:00" });
-            items.Add(new Song() { Number = 9, nameSong = "Chuyện tình con mèo", nameArtis = "Con mèo con", Time = "03:00" });
-            items.Add(new Song() { Number = 10, nameSong = "Chuyện tình con mèo", nameArtis = "Con mèo con", Time = "03:00" });
-            items.Add(new Song() { Number = 11, nameSong = "Chuyện tình con mèo", nameArtis = "Con mèo con", Time = "03:00" });
-            items.Add(new Song() { Number = 12, nameSong = "Chuyện tình con mèo", nameArtis = "Con mèo con", Time = "03:00" });
-            items.Add(new Song() { Number = 13, nameSong = "Chuyện tình con mèo", nameArtis = "Con mèo con", Time = "03:00" });
-            items.Add(new Song() { Number = 14, nameSong = "Chuyện tình con mèo", nameArtis = "Con mèo con", Time = "03:00" });
-            items.Add(new Song() { Number = 15, nameSong = "Chuyện tình con mèo", nameArtis = "Con mèo con", Time = "03:00" });
-
-            gridSong.ItemsSource = items;
+            List<Song> songItems = MainWindow.songItems;
+           
+            gridSong.ItemsSource = songItems;
 
             countSong.Text = gridSong.Items.Count + " Bài hát";
             
@@ -76,17 +61,6 @@ namespace MusicPlayer.User_Control
         }
     }
 
-    public class Song
-    {
-        public int Number { get; set; }
-
-        public String nameSong { get; set; }
-
-        public String nameArtis { get; set; }
-
-        public String Time { get; set; }
-
-
-    }
+  
 
 }
