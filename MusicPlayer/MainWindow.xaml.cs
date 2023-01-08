@@ -48,8 +48,9 @@ namespace MusicPlayer
         public static int currentIndex = 0;
         int trangthai = 0;//0:pause 1:playing
         DispatcherTimer timer = new DispatcherTimer();
-        int position = 0;
-        string t = DateTime.Now.ToString("HH:mm:ss");
+        int Position = 0;
+      
+        
 
 
 
@@ -64,10 +65,11 @@ namespace MusicPlayer
             songPlaying = songItems.ElementAt(currentIndex);
             displaySongPlaying(songPlaying);
             timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Interval = TimeSpan.FromTicks(1);
             timer.Tick += Timer_Tick;
-            //timer.Start();
+            timer.Start();
             homeUC.lsbTopSongs.SelectionChanged += LsbTopSongs_SelectionChanged;
+            sdvolume.Value = 100;
         }
 
 
@@ -82,9 +84,16 @@ namespace MusicPlayer
         
         private void Timer_Tick(object sender, EventArgs e)
         {
-            {
-                tbPosition.Text = mp3Player.Position.ToString();
-            }
+            
+                Position = Convert.ToInt32(mp3Player.Position.TotalSeconds);
+                slider.Value = Position;
+                tbPosition.Text =  (Position / 60).ToString("00") + ":" + (Position % 60).ToString("00");
+                if (Position == slider.Maximum)
+                {
+                    currentIndex++;
+                    homeUC.lsbTopSongs.SelectedIndex = currentIndex;
+                }
+
         }
 
         private void LsbTopSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -95,12 +104,10 @@ namespace MusicPlayer
             songPlaying = songItems.ElementAt(currentIndex);
             displaySongPlaying(songPlaying);
             mp3Player.Source = new Uri(songPlaying.filePath);
-            mp3Player.Play();
-       
-          
+            mp3Player.Play();  
             trangthai = 1;
-            
-
+            Mp3Lib.Mp3File Song = new Mp3Lib.Mp3File(songPlaying.filePath);
+            slider.Maximum = Convert.ToInt32(Song.Audio.Duration);
         }
 
        
@@ -198,6 +205,8 @@ namespace MusicPlayer
                 mp3Player.Source = new Uri(songPlaying.filePath);
                 mp3Player.Play();
                 trangthai = 1;
+                Mp3Lib.Mp3File Song = new Mp3Lib.Mp3File(songPlaying.filePath);
+                slider.Maximum = Convert.ToInt32(Song.Audio.Duration);
             }
             else
             {
@@ -211,6 +220,14 @@ namespace MusicPlayer
                     mp3Player.Play();
                     trangthai = 1;
                 }
+            }
+            if (btnPlay.Content == FindResource("Play"))
+            {
+                btnPlay.Content = FindResource("Pause");
+            }
+            else
+            {
+                btnPlay.Content = FindResource("Play");
             }
         }
 
@@ -231,6 +248,65 @@ namespace MusicPlayer
                 currentIndex = currentIndex + 1;
             homeUC.lsbTopSongs.SelectedIndex = currentIndex;
             
+        }
+
+        bool isDraging = false;
+
+        private void sdDuration_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (isDraging)
+            {
+                Position = Convert.ToInt32(slider.Value);
+                mp3Player.Position = new TimeSpan(0, 0, (int)Position);
+            }
+            
+        }
+
+        private void sdDuration_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            isDraging = true;
+        }
+
+        private void sdDuration_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            isDraging = false;
+        }
+
+        private void volumebtn_Enter(object sender, MouseEventArgs e)
+        {
+            sdvolume.Visibility=  Visibility.Visible;
+        }
+
+       
+
+        
+
+        private void volumebtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(sdvolume.Value == 0)
+                sdvolume.Value = 100;
+            else
+                sdvolume.Value=0;
+            sdvolume.Visibility = Visibility.Hidden;
+        }
+
+        private void sdVolume_Leave(object sender, MouseEventArgs e)
+        {
+            sdvolume.Visibility = Visibility.Hidden;
+        }
+
+        private void sdvolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            mp3Player.Volume = sdvolume.Value;
+            if(sdvolume.Value==0)
+                btnVolume.Content=FindResource("Mute");
+            else if(sdvolume.Value <30)
+                btnVolume.Content = FindResource("LVolume");
+            else if (sdvolume.Value <= 60)
+                btnVolume.Content = FindResource("MVolume");
+            else if (sdvolume.Value <= 100)
+                btnVolume.Content = FindResource("HVolume");
+
         }
     }
     public class Song

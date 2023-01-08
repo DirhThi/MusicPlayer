@@ -26,24 +26,6 @@
                 <Setter Property="FontSize" Value="22"/>
                 <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="Margin" Value=" 0 0 0 0"/>
-
-
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="Foreground" Value="White"/>
-                        
-                        <Setter Property="Effect"  >
-                            <Setter.Value>
-                                <DropShadowEffect ShadowDepth="1" />
-                            </Setter.Value>
-                        </Setter>
-                        <Setter Property="Tag" Value="Visible"/>
-                    </Trigger>
-                </Style.Triggers>
-                
-                
-                
             </Style>
 
            

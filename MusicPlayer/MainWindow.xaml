@@ -12,6 +12,15 @@
         
         ResizeMode="CanMinimize" Loaded="Form_Load"  Name="Main" WindowStartupLocation="CenterScreen"
         >
+    <Window.Resources>
+        <Icon:PackIconMaterial x:Key="Play" Height="12" Kind="Play" Visibility="Visible"/>
+        <Icon:PackIconMaterial x:Key="Pause" Height="12" Kind="Pause" Visibility="Visible"/>
+        <Icon:PackIconMaterial x:Key="Mute" Height="12" Kind="VolumeMute" Visibility="Visible"/>
+        <Icon:PackIconMaterial x:Key="HVolume" Height="12" Kind="VolumeHigh" Visibility="Visible"/>
+        <Icon:PackIconMaterial x:Key="MVolume" Height="12" Kind="VolumeMedium" Visibility="Visible"/>
+        <Icon:PackIconMaterial x:Key="LVolume" Height="12" Kind="VolumeLow" Visibility="Visible"/>
+
+    </Window.Resources>
     <Grid Background="#F8F4EA">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="220"/>
@@ -108,7 +117,7 @@
 
                     
                     <StackPanel  Margin="5 40 0 0" VerticalAlignment="Center"  Orientation="Vertical">
-                        <Slider
+                        <Slider PreviewMouseDown="sdDuration_MouseDown" PreviewMouseUp="sdDuration_MouseUp" ValueChanged="sdDuration_ValueChanged"
                             Margin="10 0 10 0"
                         x:Name="slider" 
                         IsSelectionRangeEnabled="True" 
@@ -116,15 +125,20 @@
                         Value="5" Width="320"
                         SelectionEnd="{Binding ElementName=slider,Path=Value}" Cursor="Hand"/>
                         <StackPanel HorizontalAlignment="Center"  Margin="0 0 0 0" VerticalAlignment="Center"  Orientation="Horizontal">
-                            <TextBlock x:Name="tbPosition" Text="" FontSize="14" Margin="0 0 140 0" />
+                            <TextBlock x:Name="tbPosition" Text="00:00" FontSize="14" Margin="0 0 140 0" />
                             <TextBlock x:Name="tbTime"  FontSize="14" Margin="140 0 0 0" />
                         </StackPanel>
                         <StackPanel HorizontalAlignment="Center"  Margin="0 -15 0 0" VerticalAlignment="Center"  Orientation="Horizontal">
                             <Button Margin="20,0,15,0"  Grid.Row="0" Grid.Column="1" Style="{StaticResource favoriteButton}" Cursor="Hand" Click="forward_click" >
                                 <Icon:PackIconMaterial Height="12" Kind="SkipPrevious" Visibility="Visible" Cursor="Hand"/>
                             </Button>
-                            <Button Margin="15,0,15,0"  Grid.Row="0" Grid.Column="1" Style="{StaticResource favoriteButton}" Cursor="Hand" Click="btnPlay_Click" >
-                                <Icon:PackIconMaterial Height="12" Kind="Pause" Visibility="Visible"/>
+                            <Button x:Name="btnPlay" Margin="15,0,15,0"  Grid.Row="0" Grid.Column="1" Style="{StaticResource favoriteButton}" Cursor="Hand" Click="btnPlay_Click" >
+                                <Button.Resources>
+                                  
+                                </Button.Resources>
+                                <DynamicResource ResourceKey="Play">
+                                    
+                                </DynamicResource>
                             </Button>
                             <Button Margin="15,0,15,0" Grid.Row="0" Grid.Column="1" Style="{StaticResource favoriteButton}" Cursor="Hand" Click="next_Click" >
                                 <Icon:PackIconMaterial Height="12" Kind="SkipNext" Visibility="Visible"/>
@@ -132,10 +146,23 @@
                         </StackPanel>
                     </StackPanel>
 
-
-                    <Button Margin="15,0,15,0" Grid.Row="0" Grid.Column="1" Style="{StaticResource favoriteButton}" Cursor="Hand" >
-                        <Icon:PackIconMaterial Height="12" Kind="VolumeHigh" Visibility="Visible"/>
-                    </Button>
+                    <StackPanel Orientation="Horizontal " Margin="15,0,15,0" >
+                        <Button x:Name="btnVolume"  Grid.Row="0" Grid.Column="1" Style="{StaticResource favoriteButton}" Cursor="Hand" MouseEnter="volumebtn_Enter" Click="volumebtn_Click" >
+                            <Icon:PackIconMaterial Height="12" Kind="VolumeHigh" Visibility="Visible"/>
+                        </Button>
+                        <Slider 
+                            ValueChanged="sdvolume_ValueChanged"
+                            x:Name="sdvolume" Cursor="Hand"
+                            Margin="5 0 0 45"
+                              Minimum="0"
+                              Maximum="100"
+                              Orientation="Vertical"
+                              Style="{StaticResource MaterialDesignDiscreteSlider}"
+                              Visibility="Hidden"
+                              Value="50"
+                              Height="65" MouseLeave="sdVolume_Leave" />        
+                    </StackPanel>
+                    
 
                 </StackPanel>
             </StackPanel>

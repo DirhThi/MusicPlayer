@@ -28,7 +28,21 @@ namespace MusicPlayer.User_Control
         public Home()
         {
             InitializeComponent();
-            
+            List<Playlist> items = new List<Playlist>();
+            items.Add(new Playlist() { Title = "Thứ 2 tồi tệ" });
+            items.Add(new Playlist() { Title = "Nhạc vui vẻ " });
+            items.Add(new Playlist() { Title = "Nhạc buồn xĩu" });
+            items.Add(new Playlist() { Title = "Nhạc thất tình" });
+            items.Add(new Playlist() { Title = "Thứ 2 tồi tệ" });
+            items.Add(new Playlist() { Title = "Nhạc vui vẻ " });
+            items.Add(new Playlist() { Title = "Nhạc buồn xĩu" });
+            items.Add(new Playlist() { Title = "Nhạc thất tình" });
+            items.Add(new Playlist() { Title = "Learn C#" });
+            items.Add(new Playlist() { Title = "Wash the car" });
+            items.Add(new Playlist() { Title = "Learn C#" });
+
+            icPlaylist.ItemsSource = items;
+
         }
 
         private void Home_Load(object sender, RoutedEventArgs e)
@@ -42,7 +56,7 @@ namespace MusicPlayer.User_Control
             lsbTopSongs.SelectedIndex = value;
         }
 
-        
+
         /*
         private void homeSong_Click(object sender, SelectionChangedEventArgs e)
         {
@@ -59,5 +73,11 @@ namespace MusicPlayer.User_Control
            
             
         }*/
+        public class Playlist
+        {
+
+            public string Title { get; set; }
+
+        }
     }
 }
