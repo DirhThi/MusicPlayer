@@ -20,6 +20,7 @@ namespace MusicPlayer.User_Control
     /// </summary>
     public partial class PlayList : UserControl
     {
+        List<Song> songItems = MainWindow.songItems;
         public PlayList()
         {
           
@@ -39,12 +40,13 @@ namespace MusicPlayer.User_Control
             items.Add(new Playlist() { Title = "Learn C#" });
             
             icPlaylist.ItemsSource = items;
-
+            fieldNamePl.Visibility = Visibility.Visible;
+            selectSong.Visibility = Visibility.Hidden;
+            tb_btn_createPlaylis.Text = "Tiếp tục";
 
             countPlaylist.Text = items.Count + " Playlist";
 
-
-
+            lbSelectSong.ItemsSource = songItems;
 
         }
 
@@ -54,5 +56,20 @@ namespace MusicPlayer.User_Control
             public string Title { get; set; }
            
         }
+
+        private void CreatePl_Click(object sender, RoutedEventArgs e)
+        {
+            fieldNamePl.Visibility = Visibility.Hidden;
+            selectSong.Visibility = Visibility.Visible;
+            tb_btn_createPlaylis.Text = "Lưu";
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            fieldNamePl.Visibility = Visibility.Visible;
+            selectSong.Visibility = Visibility.Hidden;
+            tb_btn_createPlaylis.Text = "Tiếp tục";
+        }
     }
 }
+

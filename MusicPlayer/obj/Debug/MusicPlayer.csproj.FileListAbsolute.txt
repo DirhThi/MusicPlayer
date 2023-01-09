@@ -2,7 +2,6 @@ G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MainWindow.g.cs
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\Explore.g.cs
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\Home.g.cs
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\ListSong.g.cs
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\PlayList.g.cs
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\App.g.cs
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer_MarkupCompile.cache
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer_MarkupCompile.lref
@@ -119,7 +118,6 @@ G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MainWindow.baml
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\Explore.baml
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\Home.baml
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\ListSong.baml
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\PlayList.baml
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.g.resources
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.Properties.Resources.resources
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.csproj.GenerateResource.cache
@@ -135,3 +133,5 @@ G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\Mp3Lib.pdb
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\Interop.WMPLib.dll
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.csproj.ResolveComReference.cache
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\PlayList.g.cs
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\PlayList.baml

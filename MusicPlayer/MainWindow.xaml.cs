@@ -93,7 +93,7 @@ namespace MusicPlayer
                     currentIndex++;
                     homeUC.lsbTopSongs.SelectedIndex = currentIndex;
                 }
-
+           
         }
 
         private void LsbTopSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -221,7 +221,7 @@ namespace MusicPlayer
                     trangthai = 1;
                 }
             }
-            if (btnPlay.Content == FindResource("Play"))
+            if (trangthai == 1)
             {
                 btnPlay.Content = FindResource("Pause");
             }
@@ -229,6 +229,8 @@ namespace MusicPlayer
             {
                 btnPlay.Content = FindResource("Play");
             }
+
+
         }
 
         private void forward_click(object sender, RoutedEventArgs e)
