@@ -138,7 +138,6 @@ namespace MusicPlayer
                 int durationSong = Convert.ToInt32(Song.Audio.Duration);
                 string t = (durationSong / 60).ToString("00") + ":"+ (durationSong % 60).ToString("00");
                 
-
                 songItems.Add(new Song() { Number = i, nameSong = Song.TagHandler.Title, nameArtis = Song.TagHandler.Artist, Time = t,filePath=(destinationDirectory + fileSong.Name) });
                 
                 i++;

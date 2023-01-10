@@ -112,7 +112,6 @@ G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MahApps.Metro.I
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MaterialDesignColors.pdb
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MaterialDesignThemes.Wpf.pdb
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MaterialDesignThemes.Wpf.xml
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.csprojAssemblyReference.cache
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\App.baml
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MainWindow.baml
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\Explore.baml
@@ -135,3 +134,4 @@ G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.csp
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\GeneratedInternalTypeHelper.g.cs
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\PlayList.g.cs
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\PlayList.baml
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.csprojAssemblyReference.cache
