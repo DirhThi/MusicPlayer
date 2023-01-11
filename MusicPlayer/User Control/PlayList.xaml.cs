@@ -55,7 +55,7 @@ namespace MusicPlayer.User_Control
             foreach (var filePlaylist in d.GetFiles("*.txt"))
             {
                 string t = filePlaylist.Name.Replace(".txt", "");
-                playlistsItems.Add(new Playlist() { Title=t,PlaylistPath= filePlaylist.ToString() }); 
+                playlistsItems.Add(new Playlist() { Title=t,PlaylistPath= d.ToString() + filePlaylist.Name }); 
             }
         }
 
@@ -114,6 +114,22 @@ namespace MusicPlayer.User_Control
         {
             gridPlaylist.Visibility = Visibility.Hidden;
             gridSongPlaylist.Visibility = Visibility.Visible;
+            Playlist Playlist = (sender as Button).DataContext as Playlist;
+            List<Song> songPlaylist = new List<Song>();
+
+            foreach (string line in File.ReadLines(Playlist.PlaylistPath))
+            {
+                for(int i=0;i<songItems.Count;i++)
+                {
+                    if(System.IO.Path.GetFileName(songItems[i].filePath)==line)
+                    {
+                        songPlaylist.Add(songItems[i]);
+                    }
+                }
+            }
+            datagridSongPlaylist.ItemsSource = songPlaylist;
+            namePlaylistSong.Text = Playlist.Title;
+            countSong.Text = songPlaylist.Count + " Bài hát";
         }
     }
 }
