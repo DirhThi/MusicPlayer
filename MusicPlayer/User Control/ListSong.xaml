@@ -75,7 +75,7 @@
                                 <Button Cursor="Hand" Margin="10 0 0 0" Style="{StaticResource favoriteButton}">
                                     <Icon:PackIconMaterial Kind="PlusBoxOutline" />
                                 </Button>
-                                <Button Cursor="Hand" Margin="10 0 0 0" Style="{StaticResource favoriteButton}">
+                                <Button Cursor="Hand" Margin="10 0 0 0" Style="{StaticResource favoriteButton}" Click="Delete_Song_Click">
                                     <Icon:PackIconMaterial Kind="DeleteOutline" />
                                 </Button>
                             </StackPanel>

@@ -62,8 +62,8 @@ namespace MusicPlayer
             btnHome.Style = (Style)Application.Current.Resources["menuButtonChoose"];
             songLoad();
             currentPlaylist = songItems;
-            songPlaying = songItems.ElementAt(currentIndex);
-            displaySongPlaying(songPlaying);
+           // songPlaying = songItems.ElementAt(currentIndex);
+         //   displaySongPlaying(songPlaying);
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromTicks(1);
             timer.Tick += Timer_Tick;
@@ -81,7 +81,16 @@ namespace MusicPlayer
 
         }
 
-        
+        private void autoorder()
+        {
+            int t = 1;
+            for (int i = 0; i < songItems.Count; i++)
+            {
+                songItems[i].Number = t;
+                t++;
+            }
+        }
+
         private void Timer_Tick(object sender, EventArgs e)
         {
             
@@ -124,7 +133,7 @@ namespace MusicPlayer
             
         }
 
-        private void songLoad()
+        private static void songLoad()
         {
             var currentDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
             string projectDirectory = currentDirectory.Parent.Parent.Parent.FullName;
