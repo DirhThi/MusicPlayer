@@ -41,6 +41,7 @@ namespace MusicPlayer
 
 
         private Button[] menuButton;
+        private UserControl[] Uc;
         public static Song songPlaying;
         public static Song pathSongPlaying = new Song();
         public static  List<Song> songItems = new List<Song>();
@@ -57,13 +58,12 @@ namespace MusicPlayer
         public MainWindow()
         {
             InitializeComponent();
-            UserControl uc = new Home();
-            border.Children.Add(uc);
+            
             btnHome.Style = (Style)Application.Current.Resources["menuButtonChoose"];
             songLoad();
             currentPlaylist = songItems;
-           // songPlaying = songItems.ElementAt(currentIndex);
-         //   displaySongPlaying(songPlaying);
+            songPlaying = songItems.ElementAt(currentIndex);
+            displaySongPlaying(songPlaying);
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromTicks(1);
             timer.Tick += Timer_Tick;
@@ -176,27 +176,48 @@ namespace MusicPlayer
                     btn.Style = (Style)Application.Current.Resources["menuButton"];
                 }
             }
+           
         }
 
+
+        private void UCChoose(UserControl uc)
+        {
+            Uc = new UserControl[] { homeUC, listsongUC, playlistUC };
+            foreach (UserControl U in Uc)
+            {
+                if (U == uc)
+                {
+                    U.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                   U.Visibility = Visibility.Hidden;
+                }
+            }
+
+        }
         private void Home_Click(object sender, RoutedEventArgs e)
         {
+            songItems = new List<Song>();
+            songLoad();
+
             BtnChoose(btnHome);
-             UserControl uc = new Home();
-            addUserControl(uc);
+            UCChoose(homeUC);
         }
 
         private void Song_Click(object sender, RoutedEventArgs e)
         {
+            songItems = new List<Song>();
+            songLoad();
             BtnChoose(btnSong);
-            UserControl uc = new ListSong();
-            addUserControl(uc);
+            UCChoose(listsongUC);
         }
 
         private void Playlist_Click(object sender, RoutedEventArgs e)
         {
             BtnChoose(btnPlaylist);
-            UserControl uc = new PlayList();
-            addUserControl(uc);
+            
+            UCChoose(playlistUC);
         }
 
         private void Explore_Click(object sender, RoutedEventArgs e)

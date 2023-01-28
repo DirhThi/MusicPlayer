@@ -57,10 +57,10 @@ namespace MusicPlayer.User_Control
                     if(File.Exists(destinationDirectory + Path.GetFileName(fileName)) ==false)
                     {
                         File.Copy(fileName, destinationDirectory + Path.GetFileName(fileName));
-                        Mp3Lib.Mp3File Song = new Mp3Lib.Mp3File(destinationDirectory + Path.GetFileName(fileName));
-                        int durationSong = Convert.ToInt32(Song.Audio.Duration);
-                        string t = (durationSong / 60).ToString("00") + ":" + (durationSong % 60).ToString("00");
-                        songItems.Add(new Song() { Number = 1, nameSong = Song.TagHandler.Title, nameArtis = Song.TagHandler.Artist, Time = t, filePath = (destinationDirectory + Path.GetFileName(fileName)) });
+                     //   Mp3Lib.Mp3File Song = new Mp3Lib.Mp3File(destinationDirectory + Path.GetFileName(fileName));
+                    //    int durationSong = Convert.ToInt32(Song.Audio.Duration);
+                      //  string t = (durationSong / 60).ToString("00") + ":" + (durationSong % 60).ToString("00");
+                     //   songItems.Add(new Song() { Number = 1, nameSong = Song.TagHandler.Title, nameArtis = Song.TagHandler.Artist, Time = t, filePath = (destinationDirectory + Path.GetFileName(fileName)) });
 
                     }
                 }
@@ -92,6 +92,14 @@ namespace MusicPlayer.User_Control
             {
             }
             autoorder();
+        }
+
+        private void Play_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.currentPlaylist = songItems;
+            Song S = (sender as Button).DataContext as Song;
+            MainWindow.songPlaying = S;
+            
         }
     }
 

@@ -48,7 +48,7 @@
 
 
 
-        <DataGrid  RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}"  Style="{DynamicResource DataGridStyle1}"
+        <DataGrid   RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}"  Style="{DynamicResource DataGridStyle1}"
             Margin="20 0 40 30"
                    Grid.Row="1"   
                    x:Name="gridSong"
@@ -56,13 +56,7 @@
                             Foreground="#22223B"
                              >
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn  Header="" CanUserResize="False" Width="auto" >
-                    <DataGridCheckBoxColumn.HeaderTemplate>
-                        <DataTemplate>
-                            <CheckBox Cursor="Hand" />
-                        </DataTemplate>
-                    </DataGridCheckBoxColumn.HeaderTemplate>
-                </DataGridCheckBoxColumn>
+                
                 <DataGridTextColumn  Header="" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
                 <DataGridTextColumn MinWidth="150"  Header="Tên bài hát" Binding="{Binding nameSong}" IsReadOnly="True" Width="*"/>
 
@@ -72,6 +66,9 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel  Orientation="Horizontal">
+                                <Button Cursor="Hand" Margin="-5 0 0 0" Style="{StaticResource favoriteButton}" Click="Play_Click">
+                                    <Icon:PackIconMaterial Kind="Play" />
+                                </Button>
                                 <Button Cursor="Hand" Margin="10 0 0 0" Style="{StaticResource favoriteButton}">
                                     <Icon:PackIconMaterial Kind="PlusBoxOutline" />
                                 </Button>

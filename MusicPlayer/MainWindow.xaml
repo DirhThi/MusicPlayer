@@ -78,7 +78,13 @@
         
         <!--UserControls Display-->
         <DockPanel x:Name="border"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
-            <uc:Home x:Name="homeUC"> </uc:Home>
+            <Grid>
+                
+                <uc:Home Visibility="Visible" x:Name="homeUC"></uc:Home>
+                <uc:PlayList  Visibility="Hidden" x:Name="playlistUC"></uc:PlayList>
+                <uc:ListSong  Visibility="Hidden" x:Name="listsongUC"></uc:ListSong>
+            </Grid>
+            
         </DockPanel>
         
         <TabControl   x:Name="MainTab" Background="Beige" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
