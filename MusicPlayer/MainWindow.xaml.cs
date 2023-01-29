@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using MusicPlayer.User_Control;
 using System.Windows.Threading;
 using MusicPlayer.Properties;
+using Microsoft.Win32;
 using System.IO;
 using System.ComponentModel;
 
@@ -68,17 +69,57 @@ namespace MusicPlayer
             timer.Interval = TimeSpan.FromTicks(1);
             timer.Tick += Timer_Tick;
             timer.Start();
-            homeUC.lsbTopSongs.SelectionChanged += LsbTopSongs_SelectionChanged;
             sdvolume.Value = 100;
+            homeUC.lsbTopSongs.SelectionChanged += LsbTopSongs_SelectionChanged;
+            epUC.playep.Click += Playep_Click;
+            listsongUC.addsongbtn.Click += Addsongbtn_Click;
+            listSong_Load();
+            home_Load();
         }
 
-
-        private void displayposition()
+        private void Playep_Click(object sender, RoutedEventArgs e)
         {
-           
+            MessageBox.Show("2222222");
+        }
+        private void home_Load()
+        {
+            homeUC.lsbTopSongs.ItemsSource = songItems;
+        }
+        private void  listSong_Load()
+        {
+            listsongUC.gridSong.ItemsSource = songItems;
+            listsongUC.countSong.Text = listsongUC.gridSong.Items.Count + " Bài hát";
+            
+        }
 
+        private void Addsongbtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "All Media Files|*.mp3;*.mp4";
+            dlg.Multiselect = true;
+            if (dlg.ShowDialog() == true)
+            {
+                foreach (String fileName in dlg.FileNames)
+                {
 
+                    var currentDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+                    string projectDirectory = currentDirectory.Parent.Parent.Parent.FullName;
+                    string destinationDirectory = projectDirectory + "\\MusicPlayer\\AllSongs\\";
+                    if (File.Exists(destinationDirectory + Path.GetFileName(fileName)) == false)
+                    {
+                        File.Copy(fileName, destinationDirectory + Path.GetFileName(fileName));
+                           Mp3Lib.Mp3File Song = new Mp3Lib.Mp3File(destinationDirectory + Path.GetFileName(fileName));
+                           int durationSong = Convert.ToInt32(Song.Audio.Duration);
+                          string t = (durationSong / 60).ToString("00") + ":" + (durationSong % 60).ToString("00");
+                         songItems.Add(new Song() { Number = 1, nameSong = Song.TagHandler.Title, nameArtis = Song.TagHandler.Artist, Time = t, filePath = (destinationDirectory + Path.GetFileName(fileName)) });
 
+                    }
+                }
+                songItems.Clear();
+                songLoad();
+                listSong_Load();
+                autoorder();
+            }
         }
 
         private void autoorder()
@@ -179,10 +220,9 @@ namespace MusicPlayer
            
         }
 
-
         private void UCChoose(UserControl uc)
         {
-            Uc = new UserControl[] { homeUC, listsongUC, playlistUC };
+            Uc = new UserControl[] { homeUC, listsongUC, playlistUC,epUC };
             foreach (UserControl U in Uc)
             {
                 if (U == uc)
@@ -202,6 +242,7 @@ namespace MusicPlayer
             songLoad();
 
             BtnChoose(btnHome);
+            
             UCChoose(homeUC);
         }
 
@@ -216,15 +257,13 @@ namespace MusicPlayer
         private void Playlist_Click(object sender, RoutedEventArgs e)
         {
             BtnChoose(btnPlaylist);
-            
             UCChoose(playlistUC);
         }
 
         private void Explore_Click(object sender, RoutedEventArgs e)
         {
             BtnChoose(btnExplore);
-            UserControl uc = new Explore();
-            addUserControl(uc);
+            UCChoose(epUC);
         }
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
@@ -307,10 +346,6 @@ namespace MusicPlayer
         {
             sdvolume.Visibility=  Visibility.Visible;
         }
-
-       
-
-        
 
         private void volumebtn_Click(object sender, RoutedEventArgs e)
         {

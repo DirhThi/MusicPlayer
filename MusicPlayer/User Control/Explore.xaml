@@ -40,7 +40,7 @@
                     <TextBlock x:Name="country" Text="Top 100 " FontSize="12" FontStyle="Italic" FontWeight="Regular" Opacity="0.9" />
                 </StackPanel>
 
-                <Button Cursor="Hand" Margin="250 0" HorizontalAlignment="Right"  Style="{StaticResource menuButton}">
+                <Button x:Name="playep" Cursor="Hand" Margin="250 0" HorizontalAlignment="Right"  Style="{StaticResource menuButton}" >
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="Play" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
                         <TextBlock Text="Phát tất cả"/>

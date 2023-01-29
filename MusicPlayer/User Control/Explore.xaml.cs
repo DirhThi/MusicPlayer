@@ -25,6 +25,6 @@ namespace MusicPlayer.User_Control
             InitializeComponent();
         }
 
-
+      
     }
 }

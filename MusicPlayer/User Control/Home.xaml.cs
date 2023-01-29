@@ -47,32 +47,9 @@ namespace MusicPlayer.User_Control
 
         private void Home_Load(object sender, RoutedEventArgs e)
         {
-            lsbTopSongs.ItemsSource = songItems;
         }
 
-        public  void currentIndexChanged(int value)
-        {
-            currentIndex = value;
-            lsbTopSongs.SelectedIndex = value;
-        }
-
-
-        /*
-        private void homeSong_Click(object sender, SelectionChangedEventArgs e)
-        {
-            
-            var item = (ListBox)sender;
-            Song songPlaying = MainWindow.songPlaying;
-            int indexSong = item.SelectedIndex;
-            currentIndex = indexSong;
-            MainWindow.currentIndex = currentIndex;
-            MainWindow.songPlaying = songPlaying;
-           songPlaying = songItems.ElementAt(currentIndex);
-            WMP.URL = songPlaying.filePath;
-            WMP.controls.play();
-           
-            
-        }*/
+      
         public class Playlist
         {
 

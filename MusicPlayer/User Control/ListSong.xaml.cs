@@ -29,13 +29,8 @@ namespace MusicPlayer.User_Control
         List<Song> songItems = MainWindow.songItems;
         public ListSong()
         {
-            InitializeComponent();
-            
-           
-            gridSong.ItemsSource = songItems;
-
-            countSong.Text = gridSong.Items.Count + " Bài hát";
-            
+            InitializeComponent();      
+          
            
 
         }
@@ -43,29 +38,7 @@ namespace MusicPlayer.User_Control
         private void AddSong_Click(object sender, RoutedEventArgs e)
         {
 
-           OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Filter = "All Media Files|*.mp3;*.mp4";
-            dlg.Multiselect = true;
-            if (dlg.ShowDialog()== true)
-            {
-                foreach (String fileName in dlg.FileNames)
-                {
-                    
-                    var currentDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-                    string projectDirectory = currentDirectory.Parent.Parent.Parent.FullName;
-                    string destinationDirectory = projectDirectory+"\\MusicPlayer\\AllSongs\\";
-                    if(File.Exists(destinationDirectory + Path.GetFileName(fileName)) ==false)
-                    {
-                        File.Copy(fileName, destinationDirectory + Path.GetFileName(fileName));
-                     //   Mp3Lib.Mp3File Song = new Mp3Lib.Mp3File(destinationDirectory + Path.GetFileName(fileName));
-                    //    int durationSong = Convert.ToInt32(Song.Audio.Duration);
-                      //  string t = (durationSong / 60).ToString("00") + ":" + (durationSong % 60).ToString("00");
-                     //   songItems.Add(new Song() { Number = 1, nameSong = Song.TagHandler.Title, nameArtis = Song.TagHandler.Artist, Time = t, filePath = (destinationDirectory + Path.GetFileName(fileName)) });
-
-                    }
-                }
-            }
-
+        
         }
 
         private void autoorder()
@@ -87,11 +60,14 @@ namespace MusicPlayer.User_Control
                 File.Delete(S.filePath);
                 MainWindow.songItems.RemoveAt(gridSong.Items.IndexOf(gridSong.SelectedItem));
                 songItems = MainWindow.songItems;
+                gridSong.ItemsSource = songItems;
             }
             else
             {
             }
             autoorder();
+            MessageBox.Show(MainWindow.songItems.Count().ToString());
+            
         }
 
         private void Play_Click(object sender, RoutedEventArgs e)

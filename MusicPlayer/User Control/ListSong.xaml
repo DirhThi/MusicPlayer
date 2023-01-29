@@ -37,7 +37,7 @@
                         <TextBlock Text="Phát tất cả"/>
                     </StackPanel>
                 </Button>
-                <Button Cursor="Hand" Margin="0 0" HorizontalAlignment="Right" Click="AddSong_Click"  Style="{StaticResource menuButton}">
+                <Button x:Name="addsongbtn" Cursor="Hand" Margin="0 0" HorizontalAlignment="Right" Click="AddSong_Click"  Style="{StaticResource menuButton}">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
                         <TextBlock Text="Thêm bài hát"/>
@@ -66,13 +66,13 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel  Orientation="Horizontal">
-                                <Button Cursor="Hand" Margin="-5 0 0 0" Style="{StaticResource favoriteButton}" Click="Play_Click">
+                                <Button Cursor="Hand" Margin="-5 0 0 0" Style="{StaticResource favoriteButton}" >
                                     <Icon:PackIconMaterial Kind="Play" />
                                 </Button>
                                 <Button Cursor="Hand" Margin="10 0 0 0" Style="{StaticResource favoriteButton}">
                                     <Icon:PackIconMaterial Kind="PlusBoxOutline" />
                                 </Button>
-                                <Button Cursor="Hand" Margin="10 0 0 0" Style="{StaticResource favoriteButton}" Click="Delete_Song_Click">
+                                <Button x:Name="DeleteSongbtn" Cursor="Hand" Margin="10 0 0 0" Style="{StaticResource favoriteButton}" Click="Delete_Song_Click"  >
                                     <Icon:PackIconMaterial Kind="DeleteOutline" />
                                 </Button>
                             </StackPanel>
