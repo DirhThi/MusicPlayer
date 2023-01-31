@@ -61,6 +61,7 @@ namespace MusicPlayer.User_Control
                 MainWindow.songItems.RemoveAt(gridSong.Items.IndexOf(gridSong.SelectedItem));
                 songItems = MainWindow.songItems;
                 gridSong.ItemsSource = songItems;
+                
             }
             else
             {

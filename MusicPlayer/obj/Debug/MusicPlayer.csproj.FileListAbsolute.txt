@@ -1,13 +1,8 @@
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MainWindow.g.cs
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\Explore.g.cs
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\Home.g.cs
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\ListSong.g.cs
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\App.g.cs
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer_MarkupCompile.cache
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer_MarkupCompile.lref
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MusicPlayer.exe.config
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MusicPlayer.exe
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MusicPlayer.pdb
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\ICSharpCode.SharpZipLib.dll
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\Id3Lib.dll
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MahApps.Metro.IconPacks.BootstrapIcons.dll
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MahApps.Metro.IconPacks.BoxIcons.dll
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MahApps.Metro.IconPacks.Codicons.dll
@@ -43,6 +38,8 @@ G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MahApps.Metro.I
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MahApps.Metro.IconPacks.Zondicons.dll
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MaterialDesignColors.dll
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MaterialDesignThemes.Wpf.dll
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\Mp3Lib.dll
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\Id3Lib.pdb
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MahApps.Metro.IconPacks.pdb
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MahApps.Metro.IconPacks.xml
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MahApps.Metro.IconPacks.BootstrapIcons.pdb
@@ -112,11 +109,24 @@ G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MahApps.Metro.I
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MaterialDesignColors.pdb
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MaterialDesignThemes.Wpf.pdb
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\MaterialDesignThemes.Wpf.xml
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\Mp3Lib.pdb
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\Interop.WMPLib.dll
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.csproj.ResolveComReference.cache
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MainWindow.g.cs
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\Explore.g.cs
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\Home.g.cs
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\ListSong.g.cs
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\PlayList.g.cs
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\App.g.cs
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer_MarkupCompile.cache
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer_MarkupCompile.lref
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\App.baml
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MainWindow.baml
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\Explore.baml
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\Home.baml
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\ListSong.baml
+G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\PlayList.baml
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.g.resources
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.Properties.Resources.resources
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.csproj.GenerateResource.cache
@@ -124,14 +134,4 @@ G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.csp
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.csproj.CopyComplete
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.exe
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.pdb
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\ICSharpCode.SharpZipLib.dll
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\Id3Lib.dll
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\Mp3Lib.dll
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\Id3Lib.pdb
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\bin\Debug\Mp3Lib.pdb
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\Interop.WMPLib.dll
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.csproj.ResolveComReference.cache
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\GeneratedInternalTypeHelper.g.cs
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\PlayList.g.cs
-G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\User Control\PlayList.baml
 G:\HKI NH 2022-2023\IT008 Lttq\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.csprojAssemblyReference.cache

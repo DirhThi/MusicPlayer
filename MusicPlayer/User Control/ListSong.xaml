@@ -31,24 +31,27 @@
                     <TextBlock Text="Tất cả bài hát" Opacity="0.9"  Margin="0 0" Style="{StaticResource menuTitle}"/>
                     <TextBlock x:Name="countSong" Text="00 Bài hát" FontSize="12" FontStyle="Italic" FontWeight="Regular" Opacity="0.9" />
                 </StackPanel>
-                <Button Cursor="Hand"  Margin="200 0 0 0" HorizontalAlignment="Right"  Style="{StaticResource menuButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <Icon:PackIconMaterial Kind="Play" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
-                        <TextBlock Text="Phát tất cả"/>
-                    </StackPanel>
-                </Button>
-                <Button x:Name="addsongbtn" Cursor="Hand" Margin="0 0" HorizontalAlignment="Right" Click="AddSong_Click"  Style="{StaticResource menuButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
-                        <TextBlock Text="Thêm bài hát"/>
-                    </StackPanel>
-                </Button>
+                <StackPanel Orientation="Horizontal" >
+                    <Button Cursor="Hand"  Margin="200 0 0 0" HorizontalAlignment="Right"  Style="{StaticResource menuButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="Play" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                            <TextBlock Text="Phát tất cả"/>
+                        </StackPanel>
+                    </Button>
+                    <Button  x:Name="addsongbtn" Cursor="Hand" Margin="0 0" HorizontalAlignment="Right" Click="AddSong_Click"  Style="{StaticResource menuButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                            <TextBlock Text="Thêm bài hát"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                
             </StackPanel>
         </StackPanel>
 
 
 
-        <DataGrid   RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}"  Style="{DynamicResource DataGridStyle1}"
+        <DataGrid  RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}"  Style="{DynamicResource DataGridStyle1}"
             Margin="20 0 40 30"
                    Grid.Row="1"   
                    x:Name="gridSong"
@@ -72,13 +75,15 @@
                                 <Button Cursor="Hand" Margin="10 0 0 0" Style="{StaticResource favoriteButton}">
                                     <Icon:PackIconMaterial Kind="PlusBoxOutline" />
                                 </Button>
-                                <Button x:Name="DeleteSongbtn" Cursor="Hand" Margin="10 0 0 0" Style="{StaticResource favoriteButton}" Click="Delete_Song_Click"  >
+                                <Button  x:Name="DeleteSongbtn" Cursor="Hand" Margin="10 0 0 0" Style="{StaticResource favoriteButton}" Click="Delete_Song_Click"  >
                                     <Icon:PackIconMaterial Kind="DeleteOutline" />
                                 </Button>
                             </StackPanel>
+                            
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -42,6 +42,8 @@ namespace MusicPlayer
 
 
         private Button[] menuButton;
+        private Button[] favButton;
+
         private UserControl[] Uc;
         public static Song songPlaying;
         public static Song pathSongPlaying = new Song();
@@ -49,6 +51,7 @@ namespace MusicPlayer
         public static List<Song> currentPlaylist = new List<Song>();
         public static int currentIndex = 0;
         int trangthai = 0;//0:pause 1:playing
+        int baitieptheo = 0;//0:shuffledisable 1:shuffle 2:repeatonce
         DispatcherTimer timer = new DispatcherTimer();
         int Position = 0;
       
@@ -61,6 +64,7 @@ namespace MusicPlayer
             InitializeComponent();
             
             btnHome.Style = (Style)Application.Current.Resources["menuButtonChoose"];
+            homeUC.ShuffleDisabledbtn.Style = (Style)Application.Current.Resources["favoriteButtonChoose"];
             songLoad();
             currentPlaylist = songItems;
             songPlaying = songItems.ElementAt(currentIndex);
@@ -71,10 +75,33 @@ namespace MusicPlayer
             timer.Start();
             sdvolume.Value = 100;
             homeUC.lsbTopSongs.SelectionChanged += LsbTopSongs_SelectionChanged;
+            homeUC.ShuffleDisabledbtn.Click += ShuffleDisabledbtn_Click;
+            homeUC.Shufflebtn.Click += Shufflebtn_Click;
+            homeUC.RepeatOncebtn.Click += RepeatOncebtn_Click;
             epUC.playep.Click += Playep_Click;
             listsongUC.addsongbtn.Click += Addsongbtn_Click;
             listSong_Load();
             home_Load();
+        }
+
+        private void RepeatOncebtn_Click(object sender, RoutedEventArgs e)
+        {
+            BtnChoose(homeUC.RepeatOncebtn);
+            baitieptheo = 2;
+        }
+
+        private void Shufflebtn_Click(object sender, RoutedEventArgs e)
+        {
+            BtnChoose(homeUC.Shufflebtn);
+            baitieptheo = 1;
+
+        }
+
+        private void ShuffleDisabledbtn_Click(object sender, RoutedEventArgs e)
+        {
+            BtnChoose(homeUC.ShuffleDisabledbtn);
+            baitieptheo = 0;
+
         }
 
         private void Playep_Click(object sender, RoutedEventArgs e)
@@ -119,6 +146,7 @@ namespace MusicPlayer
                 songLoad();
                 listSong_Load();
                 autoorder();
+                home_Load();            
             }
         }
 
@@ -140,9 +168,32 @@ namespace MusicPlayer
                 tbPosition.Text =  (Position / 60).ToString("00") + ":" + (Position % 60).ToString("00");
                 if (Position == slider.Maximum)
                 {
-                    currentIndex++;
-                    homeUC.lsbTopSongs.SelectedIndex = currentIndex;
+                    if (baitieptheo == 0)
+                    {
+                        if (currentIndex == currentPlaylist.Count)
+                            currentIndex = 0;
+                        else
+                            currentIndex = currentIndex + 1;
+                        homeUC.lsbTopSongs.SelectedIndex = currentIndex;
+                    }
+                    else if (baitieptheo == 1)
+                    {
+                        int number = currentIndex;
+                        Random r = new Random();
+                        do
+                        {
+                            number = r.Next(0, currentPlaylist.Count() + 1);
+                        } while (number == currentIndex);
+                        currentIndex = number;
+                        homeUC.lsbTopSongs.SelectedIndex = currentIndex;
+                    }
+                    else
+                    {
+                    mp3Player.Position = new TimeSpan(0, 0, 0);
+
+
                 }
+            }
            
         }
 
@@ -199,7 +250,7 @@ namespace MusicPlayer
             border.Children.Add(uc);
         }        
 
-        private void BtnChoose(Button bt)
+        private void MenuBtnChoose(Button bt)
         {
             menuButton = new Button[] { btnHome, btnSong, btnPlaylist, btnFavorite, btnExplore };
             foreach( Button btn in menuButton )
@@ -219,6 +270,26 @@ namespace MusicPlayer
             }
            
         }
+
+        private void BtnChoose(Button bt)
+        {
+            favButton = new Button[] { homeUC.ShuffleDisabledbtn, homeUC.Shufflebtn, homeUC.RepeatOncebtn };
+            foreach (Button btn in favButton)
+            {
+                if (btn == bt)
+                {
+                    
+                    btn.Style = (Style)Application.Current.Resources["favoriteButtonChoose"];
+                }
+                else
+                {
+                    
+                    btn.Style = (Style)Application.Current.Resources["favoriteButton"];
+                }
+            }
+
+        }
+
 
         private void UCChoose(UserControl uc)
         {
@@ -241,7 +312,7 @@ namespace MusicPlayer
             songItems = new List<Song>();
             songLoad();
 
-            BtnChoose(btnHome);
+            MenuBtnChoose(btnHome);
             
             UCChoose(homeUC);
         }
@@ -250,19 +321,19 @@ namespace MusicPlayer
         {
             songItems = new List<Song>();
             songLoad();
-            BtnChoose(btnSong);
+            MenuBtnChoose(btnSong);
             UCChoose(listsongUC);
         }
 
         private void Playlist_Click(object sender, RoutedEventArgs e)
         {
-            BtnChoose(btnPlaylist);
+            MenuBtnChoose(btnPlaylist);
             UCChoose(playlistUC);
         }
 
         private void Explore_Click(object sender, RoutedEventArgs e)
         {
-            BtnChoose(btnExplore);
+            MenuBtnChoose(btnExplore);
             UCChoose(epUC);
         }
 
@@ -303,20 +374,58 @@ namespace MusicPlayer
 
         private void forward_click(object sender, RoutedEventArgs e)
         {
-            if (currentIndex == 0)
-                currentIndex = currentPlaylist.Count();
+            if(baitieptheo==0)
+            {
+                if (currentIndex == 0)
+                    currentIndex = currentPlaylist.Count();
+                else
+                    currentIndex = currentIndex - 1;
+                homeUC.lsbTopSongs.SelectedIndex = currentIndex;
+            }
+            else if(baitieptheo==1)
+            {
+                int number = currentIndex;
+                Random r = new Random();
+                do
+                {
+                    number = r.Next(0, currentPlaylist.Count() + 1);
+                } while (number == currentIndex);
+                currentIndex = number;
+                homeUC.lsbTopSongs.SelectedIndex = currentIndex;
+            }
             else
-                currentIndex = currentIndex - 1;
-            homeUC.lsbTopSongs.SelectedIndex = currentIndex;         
+            {
+
+            }
+                  
         }
 
         private void next_Click(object sender, RoutedEventArgs e)
         {
-            if (currentIndex == currentPlaylist.Count)
-                currentIndex = 0;
+            if (baitieptheo == 0)
+            {
+                if (currentIndex == currentPlaylist.Count)
+                    currentIndex = 0;
+                else
+                    currentIndex = currentIndex + 1;
+                homeUC.lsbTopSongs.SelectedIndex = currentIndex;
+            }
+            else if (baitieptheo == 1)
+            {
+                int number = currentIndex;
+                Random r = new Random();
+                do
+                {
+                    number = r.Next(0, currentPlaylist.Count() + 1);
+                } while (number == currentIndex);
+                currentIndex = number;
+                homeUC.lsbTopSongs.SelectedIndex = currentIndex;
+            }
             else
-                currentIndex = currentIndex + 1;
-            homeUC.lsbTopSongs.SelectedIndex = currentIndex;
+            {
+
+            }
+            
             
         }
 
@@ -328,8 +437,9 @@ namespace MusicPlayer
             {
                 Position = Convert.ToInt32(slider.Value);
                 mp3Player.Position = new TimeSpan(0, 0, (int)Position);
+
             }
-            
+
         }
 
         private void sdDuration_MouseDown(object sender, MouseButtonEventArgs e)
@@ -363,7 +473,7 @@ namespace MusicPlayer
 
         private void sdvolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            mp3Player.Volume = sdvolume.Value;
+            mp3Player.Volume = sdvolume.Value/100;
             if(sdvolume.Value==0)
                 btnVolume.Content=FindResource("Mute");
             else if(sdvolume.Value <30)

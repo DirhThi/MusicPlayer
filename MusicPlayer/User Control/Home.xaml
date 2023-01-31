@@ -46,13 +46,13 @@
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Danh sách bài hát"  Opacity="0.9" Margin="30 10"  Style="{StaticResource menuTitle}"/>
                     <StackPanel Margin="5 0 0 0" Grid.Column="1" Orientation="Horizontal">
-                        <Button Margin="0,0,0,0" Height="30" Width="30" Cursor="Hand" Grid.Row="0"  Style="{StaticResource favoriteButton}" >
+                        <Button x:Name="ShuffleDisabledbtn" Margin="0,0,0,0" Height="30" Width="30" Cursor="Hand" Grid.Row="0"  Style="{StaticResource favoriteButton}" >
                             <Icon:PackIconMaterial  Height="12" Kind="ShuffleDisabled" Visibility="Visible"/>
                         </Button>
-                        <Button Margin="0,0,0,0" Height="30" Width="30" Cursor="Hand" Grid.Row="0"  Style="{StaticResource favoriteButton}" >
+                        <Button x:Name="Shufflebtn" Margin="0,0,0,0" Height="30" Width="30" Cursor="Hand" Grid.Row="0"  Style="{StaticResource favoriteButton}" >
                             <Icon:PackIconMaterial  Height="12" Kind="Shuffle" Visibility="Visible"/>
                         </Button>
-                        <Button Margin="0,0,0,0"  Height="30" Width="30" Cursor="Hand"  Grid.Row="0" Style="{StaticResource favoriteButton}" >
+                        <Button x:Name="RepeatOncebtn" Margin="0,0,0,0"  Height="30" Width="30" Cursor="Hand"  Grid.Row="0" Style="{StaticResource favoriteButton}" >
                             <Icon:PackIconMaterial  Kind="RepeatOnce" Visibility="Visible"/>
                         </Button>
                         

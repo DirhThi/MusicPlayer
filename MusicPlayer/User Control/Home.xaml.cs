@@ -21,10 +21,10 @@ namespace MusicPlayer.User_Control
     /// </summary>
     /// 
     public partial class Home : UserControl
-    {      
+    {
         List<Song> songItems = MainWindow.songItems;
         public int currentIndex = MainWindow.currentIndex;
-        
+
         public Home()
         {
             InitializeComponent();
@@ -49,12 +49,13 @@ namespace MusicPlayer.User_Control
         {
         }
 
-      
+
         public class Playlist
         {
 
             public string Title { get; set; }
 
         }
+
     }
 }
