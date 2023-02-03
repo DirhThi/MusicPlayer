@@ -20,87 +20,9 @@ namespace MusicPlayer.User_Control
         List<Playlist> playlistsItems= new List<Playlist>();
         public PlayList()
         {
-          
+
             InitializeComponent();
-
-            PlaylistLoad();
-            icPlaylist.ItemsSource = playlistsItems;
-            fieldNamePl.Visibility = Visibility.Visible;
-            selectSong.Visibility = Visibility.Hidden;
-            tb_btn_createPlaylis.Text = "Tiếp tục";
-            countPlaylist.Text = playlistsItems.Count + " Playlist";
-            lbSelectSong.ItemsSource = songItems;
-            gridPlaylist.Visibility = Visibility.Visible;
-            gridSongPlaylist.Visibility = Visibility.Hidden;
-
-        }
-
-        public void displayPlaylistLoad()
-        {
-            PlaylistLoad();
-            icPlaylist.ItemsSource = playlistsItems;
-        }
-        
-
-        public void PlaylistLoad()
-        {
-            var currentDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-            string projectDirectory = currentDirectory.Parent.Parent.Parent.FullName;
-            string destinationDirectory = projectDirectory + "\\MusicPlayer\\Playlists\\";
-            DirectoryInfo d = new DirectoryInfo(destinationDirectory);       
-            foreach (var filePlaylist in d.GetFiles("*.txt"))
-            {
-                string t = filePlaylist.Name.Replace(".txt", "");
-                playlistsItems.Add(new Playlist() { Title=t,PlaylistPath= d.ToString() + filePlaylist.Name  }); 
-            }
-        }
-
-        private void Contin_Click(object sender, RoutedEventArgs e)
-        {
-            if(TrangThaiP==0)
-            {
-                if(namePlaylist.Text.Length==0)
-                {
-                    Popup.PlacementTarget = namePlaylist;
-                    Popup.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
-                    Popup.IsOpen = true;
-                }    
-                else
-                {
-                    Popup.IsOpen = false;
-                    fieldNamePl.Visibility = Visibility.Hidden;
-                    selectSong.Visibility = Visibility.Visible;
-                    tb_btn_createPlaylis.Text = "Lưu";
-                    TrangThaiP = 1;
-                }    
-                
-            }
-            else
-            {
-                var currentDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-                string projectDirectory = currentDirectory.Parent.Parent.Parent.FullName;
-                string destinationDirectory = projectDirectory + "\\MusicPlayer\\Playlists\\";
-                string PlaylistPath = destinationDirectory  + namePlaylist.Text + ".txt";
-                //  File.Copy(fileName, destinationDirectory + Path.GetFileName(fileName));
-                StreamWriter w = new StreamWriter(PlaylistPath, true);
-               
-                
-                for (int i=0;i<lbSelectSong.SelectedItems.Count;i++)
-                {                    
-                    int t = lbSelectSong.Items.IndexOf(lbSelectSong.SelectedItems[i]);
-                    string s = System.IO.Path.GetFileName(songItems[i].filePath);
-                    w.WriteLine(s);
-                }
-                w.Close();
-                Dialog.IsOpen = false;
-                
-
-            }
-        }
-
-        private void Createpl_Click(object sender, RoutedEventArgs e)
-        {
-            
+           
         }
 
         private void Playlist_Click(object sender, RoutedEventArgs e)

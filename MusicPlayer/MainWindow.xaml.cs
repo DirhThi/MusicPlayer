@@ -27,19 +27,8 @@ namespace MusicPlayer
     /// Interaction logic for MainWindow.xaml
     /// </summary>
 
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window
     {
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string newName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(newName));
-            }
-        }
-
 
         private Button[] menuButton;
         private Button[] favButton;
@@ -84,8 +73,15 @@ namespace MusicPlayer
             listsongUC.addsongbtn.Click += Addsongbtn_Click;
             playlistUC.contbtn.Click += Contbtn_Click;
             playlistUC.createplbtn.Click += Createplbtn_Click;
+            playlistUC.cancelDialog.Click += CancelDialog_Click;
             listSong_Load();
             home_Load();
+            playlistUC_Load();
+        }
+
+        private void CancelDialog_Click(object sender, RoutedEventArgs e)
+        {
+           
         }
 
         private void Createplbtn_Click(object sender, RoutedEventArgs e)
@@ -94,6 +90,7 @@ namespace MusicPlayer
             playlistUC.fieldNamePl.Visibility = Visibility.Visible;
             playlistUC.selectSong.Visibility = Visibility.Hidden;
             playlistUC.tb_btn_createPlaylis.Text = "Tiếp tục";
+            playlistUC.namePlaylist.Clear();
         }
 
         private void Contbtn_Click(object sender, RoutedEventArgs e)
@@ -108,11 +105,29 @@ namespace MusicPlayer
                 }
                 else
                 {
-                    playlistUC.Popup.IsOpen = false;
-                    playlistUC.fieldNamePl.Visibility = Visibility.Hidden;
-                    playlistUC.selectSong.Visibility = Visibility.Visible;
-                    playlistUC.tb_btn_createPlaylis.Text = "Lưu";
-                    TrangThaiP = 1;
+                    int check = 0;
+                    var currentDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+                    string projectDirectory = currentDirectory.Parent.Parent.Parent.FullName;
+                    string destinationDirectory = projectDirectory + "\\MusicPlayer\\Playlists\\";
+                    DirectoryInfo d = new DirectoryInfo(destinationDirectory);
+                    foreach (var filePlaylist in d.GetFiles("*.txt"))
+                    {
+                        string t = filePlaylist.Name.Replace(".txt", "");
+                        if(t==playlistUC.namePlaylist.Text)
+                        {
+                            MessageBox.Show("Tên Playlist đã tồn tại ! ");
+                             check = 1;
+                        }
+                    }
+                    if(check==0)
+                    {
+                        playlistUC.Popup.IsOpen = false;
+                        playlistUC.fieldNamePl.Visibility = Visibility.Hidden;
+                        playlistUC.selectSong.Visibility = Visibility.Visible;
+                        playlistUC.tb_btn_createPlaylis.Text = "Lưu";
+                        TrangThaiP = 1;
+                    }
+                    
                 }
 
             }
@@ -134,6 +149,12 @@ namespace MusicPlayer
                 }
                 w.Close();
                 playlistUC.Dialog.IsOpen = false;
+                playlistsItems.Clear();
+                PlaylistLoad();
+                playlistUC.icPlaylist.Items.Refresh();
+                homeUC.panelPlaylist.Items.Refresh();
+
+
 
 
             }
@@ -196,6 +217,7 @@ namespace MusicPlayer
         private void home_Load()
         {
             homeUC.lsbTopSongs.ItemsSource = songItems;
+            homeUC.panelPlaylist.ItemsSource = playlistsItems;
         }
         private void  listSong_Load()
         {
@@ -408,6 +430,12 @@ namespace MusicPlayer
         {
             MenuBtnChoose(btnPlaylist);
             UCChoose(playlistUC);
+            playlistUC.fieldNamePl.Visibility = Visibility.Visible;
+            playlistUC.selectSong.Visibility = Visibility.Hidden;
+            playlistUC.gridPlaylist.Visibility = Visibility.Visible;
+            playlistUC.gridSongPlaylist.Visibility = Visibility.Hidden;
+            playlistUC.fieldNamePl.Visibility = Visibility.Visible;
+            playlistUC.Dialog.IsOpen = false;
         }
 
         private void Explore_Click(object sender, RoutedEventArgs e)

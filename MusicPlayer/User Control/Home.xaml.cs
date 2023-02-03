@@ -22,31 +22,11 @@ namespace MusicPlayer.User_Control
     /// 
     public partial class Home : UserControl
     {
-        List<Song> songItems = MainWindow.songItems;
-        public int currentIndex = MainWindow.currentIndex;
 
         public Home()
         {
             InitializeComponent();
-            List<Playlist> items = new List<Playlist>();
-            items.Add(new Playlist() { Title = "Thứ 2 tồi tệ" , songNumber="3" });
-            items.Add(new Playlist() { Title = "Nhạc vui vẻ ", songNumber = "3" });
-            items.Add(new Playlist() { Title = "Nhạc buồn xĩu", songNumber = "3" });
-            items.Add(new Playlist() { Title = "Nhạc thất tình", songNumber = "3" });
-            items.Add(new Playlist() { Title = "Thứ 2 tồi tệ", songNumber = "3" });
-            items.Add(new Playlist() { Title = "Nhạc vui vẻ ", songNumber = "3" });
-            items.Add(new Playlist() { Title = "Nhạc buồn xĩu", songNumber = "3" });
-            items.Add(new Playlist() { Title = "Nhạc thất tình", songNumber = "3" });
-            items.Add(new Playlist() { Title = "Learn C#", songNumber = "3" });
-            items.Add(new Playlist() { Title = "Wash the car", songNumber = "3" });
-            items.Add(new Playlist() { Title = "Learn C#", songNumber = "3" });
-            items.Add(new Playlist() { Title = "Nhạc vui vẻ ", songNumber = "3" });
-            items.Add(new Playlist() { Title = "Nhạc buồn xĩu", songNumber = "3" });
-            items.Add(new Playlist() { Title = "Nhạc thất tình", songNumber = "3" });
-            items.Add(new Playlist() { Title = "Learn C#", songNumber = "3" });
-            items.Add(new Playlist() { Title = "Wash the car", songNumber = "3" });
-            items.Add(new Playlist() { Title = "Learn C#", songNumber = "3" });
-            panelPlaylist.ItemsSource = items;
+            
 
         }
 
@@ -55,12 +35,6 @@ namespace MusicPlayer.User_Control
         }
 
 
-        public class Playlist
-        {
-
-            public string Title { get; set; }
-            public string songNumber { get; set; }
-        }
-
+       
     }
 }
