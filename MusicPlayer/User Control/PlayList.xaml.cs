@@ -40,11 +40,7 @@ namespace MusicPlayer.User_Control
             PlaylistLoad();
             icPlaylist.ItemsSource = playlistsItems;
         }
-        public class Playlist
-        {
-            public string Title { get; set; }
-            public string PlaylistPath { get; set; }      
-        }
+        
 
         public void PlaylistLoad()
         {
@@ -55,7 +51,7 @@ namespace MusicPlayer.User_Control
             foreach (var filePlaylist in d.GetFiles("*.txt"))
             {
                 string t = filePlaylist.Name.Replace(".txt", "");
-                playlistsItems.Add(new Playlist() { Title=t,PlaylistPath= d.ToString() + filePlaylist.Name }); 
+                playlistsItems.Add(new Playlist() { Title=t,PlaylistPath= d.ToString() + filePlaylist.Name  }); 
             }
         }
 
@@ -104,10 +100,7 @@ namespace MusicPlayer.User_Control
 
         private void Createpl_Click(object sender, RoutedEventArgs e)
         {
-            TrangThaiP = 0;
-            fieldNamePl.Visibility = Visibility.Visible;
-            selectSong.Visibility = Visibility.Hidden;
-            tb_btn_createPlaylis.Text = "Tiếp tục";
+            
         }
 
         private void Playlist_Click(object sender, RoutedEventArgs e)

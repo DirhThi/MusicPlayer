@@ -43,7 +43,8 @@ namespace MusicPlayer
 
         private Button[] menuButton;
         private Button[] favButton;
-
+        int TrangThaiP = 0;//0 Khoi tao , 1 chon bai hat
+        List<Playlist> playlistsItems = new List<Playlist>();
         private UserControl[] Uc;
         public static Song songPlaying;
         public static Song pathSongPlaying = new Song();
@@ -74,15 +75,99 @@ namespace MusicPlayer
             timer.Tick += Timer_Tick;
             timer.Start();
             sdvolume.Value = 100;
+            mp3Player.Volume = 1;
             homeUC.lsbTopSongs.SelectionChanged += LsbTopSongs_SelectionChanged;
             homeUC.ShuffleDisabledbtn.Click += ShuffleDisabledbtn_Click;
             homeUC.Shufflebtn.Click += Shufflebtn_Click;
             homeUC.RepeatOncebtn.Click += RepeatOncebtn_Click;
             epUC.playep.Click += Playep_Click;
             listsongUC.addsongbtn.Click += Addsongbtn_Click;
+            playlistUC.contbtn.Click += Contbtn_Click;
+            playlistUC.createplbtn.Click += Createplbtn_Click;
             listSong_Load();
             home_Load();
         }
+
+        private void Createplbtn_Click(object sender, RoutedEventArgs e)
+        {
+            TrangThaiP = 0;
+            playlistUC.fieldNamePl.Visibility = Visibility.Visible;
+            playlistUC.selectSong.Visibility = Visibility.Hidden;
+            playlistUC.tb_btn_createPlaylis.Text = "Tiếp tục";
+        }
+
+        private void Contbtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (TrangThaiP == 0)
+            {
+                if (playlistUC.namePlaylist.Text.Length == 0)
+                {
+                    playlistUC.Popup.PlacementTarget = playlistUC.namePlaylist;
+                    playlistUC.Popup.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+                    playlistUC.Popup.IsOpen = true;
+                }
+                else
+                {
+                    playlistUC.Popup.IsOpen = false;
+                    playlistUC.fieldNamePl.Visibility = Visibility.Hidden;
+                    playlistUC.selectSong.Visibility = Visibility.Visible;
+                    playlistUC.tb_btn_createPlaylis.Text = "Lưu";
+                    TrangThaiP = 1;
+                }
+
+            }
+            else
+            {
+                var currentDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+                string projectDirectory = currentDirectory.Parent.Parent.Parent.FullName;
+                string destinationDirectory = projectDirectory + "\\MusicPlayer\\Playlists\\";
+                string PlaylistPath = destinationDirectory + playlistUC.namePlaylist.Text + ".txt";
+                //  File.Copy(fileName, destinationDirectory + Path.GetFileName(fileName));
+                StreamWriter w = new StreamWriter(PlaylistPath, true);
+
+
+                for (int i = 0; i < playlistUC.lbSelectSong.SelectedItems.Count; i++)
+                {
+                    int t = playlistUC.lbSelectSong.Items.IndexOf(playlistUC.lbSelectSong.SelectedItems[i]);
+                    string s = System.IO.Path.GetFileName(songItems[i].filePath);
+                    w.WriteLine(s);
+                }
+                w.Close();
+                playlistUC.Dialog.IsOpen = false;
+
+
+            }
+        }
+
+        public void playlistUC_Load()
+        {
+            PlaylistLoad();
+            
+            playlistUC.icPlaylist.ItemsSource = playlistsItems;
+            playlistUC.fieldNamePl.Visibility = Visibility.Visible;
+            playlistUC.selectSong.Visibility = Visibility.Hidden;
+            playlistUC.tb_btn_createPlaylis.Text = "Tiếp tục";
+            playlistUC.countPlaylist.Text = playlistsItems.Count + " Playlist";
+            playlistUC.lbSelectSong.ItemsSource = songItems;
+            playlistUC.gridPlaylist.Visibility = Visibility.Visible;
+            playlistUC.gridSongPlaylist.Visibility = Visibility.Hidden;
+
+        }
+
+        public void PlaylistLoad()
+        {
+            var currentDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+            string projectDirectory = currentDirectory.Parent.Parent.Parent.FullName;
+            string destinationDirectory = projectDirectory + "\\MusicPlayer\\Playlists\\";
+            DirectoryInfo d = new DirectoryInfo(destinationDirectory);
+            foreach (var filePlaylist in d.GetFiles("*.txt"))
+            {
+                string t = filePlaylist.Name.Replace(".txt", "");
+                playlistsItems.Add(new Playlist() { Title = t, PlaylistPath = d.ToString() + filePlaylist.Name });
+            }
+        }
+
+        
 
         private void RepeatOncebtn_Click(object sender, RoutedEventArgs e)
         {
@@ -118,7 +203,6 @@ namespace MusicPlayer
             listsongUC.countSong.Text = listsongUC.gridSong.Items.Count + " Bài hát";
             
         }
-
         private void Addsongbtn_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -135,11 +219,6 @@ namespace MusicPlayer
                     if (File.Exists(destinationDirectory + Path.GetFileName(fileName)) == false)
                     {
                         File.Copy(fileName, destinationDirectory + Path.GetFileName(fileName));
-                           Mp3Lib.Mp3File Song = new Mp3Lib.Mp3File(destinationDirectory + Path.GetFileName(fileName));
-                           int durationSong = Convert.ToInt32(Song.Audio.Duration);
-                          string t = (durationSong / 60).ToString("00") + ":" + (durationSong % 60).ToString("00");
-                         songItems.Add(new Song() { Number = 1, nameSong = Song.TagHandler.Title, nameArtis = Song.TagHandler.Artist, Time = t, filePath = (destinationDirectory + Path.GetFileName(fileName)) });
-
                     }
                 }
                 songItems.Clear();
@@ -496,5 +575,12 @@ namespace MusicPlayer
         public String Time { get; set; }
 
         public String filePath { get; set; }
+    }
+
+    public class Playlist
+    {
+        public string Title { get; set; }
+        public string PlaylistPath { get; set; }
+
     }
 }

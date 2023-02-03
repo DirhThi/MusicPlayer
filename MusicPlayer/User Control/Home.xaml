@@ -101,45 +101,51 @@
             HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand">
                     <StackPanel >
                     <Border  CornerRadius="20" Background="Transparent" Height="360" Width="320">
-                        <ScrollViewer Background="Transparent" Margin="-10,0" Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto">
-                            <WrapPanel  ItemHeight="auto" ItemWidth="auto" x:Name="panelPlaylist" Orientation="Horizontal" Background="Transparent"  Margin="0,0" >
-                                <ItemsControl Name="icPlaylist">
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <WrapPanel/>
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Width="auto"  HorizontalAlignment="Center" Orientation="Vertical">
-                                                <Button Width="auto" Height="auto" Margin="0,0" Cursor="Hand"  Grid.Row="0" Grid.Column="1"  Style="{StaticResource playlistButton}" >
-                                                    <Border CornerRadius="20" Margin="15,15,12,0" Width="80" Height="80" >
-                                                        <Border.Background>
-                                                            <LinearGradientBrush>
-                                                                <GradientStop Color="Coral" Offset="0"/>
-                                                                <GradientStop Color="Orange" Offset="1"/>
-                                                            </LinearGradientBrush>
-                                                        </Border.Background>
-                                                        <Border.Effect>
-                                                            <DropShadowEffect BlurRadius="20" ShadowDepth="5"  Color="Red"/>
-                                                        </Border.Effect>
-                                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0" RenderTransformOrigin="0.5,0.5" >
+                    <!--<ScrollViewer ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Background="Transparent" Margin="-10,0" Grid.Row="1" Grid.Column="0">
+                        </ScrollViewer>-->
+                        <ListBox Width="300"    ScrollViewer.VerticalScrollBarVisibility="Hidden"  x:Name="panelPlaylist"  HorizontalContentAlignment="Stretch" SelectionMode="Multiple"   >
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListBoxItem}">
+                                    <Setter Property="Focusable" Value="True"/>
 
-                                                            <Image Margin="15 10 15 15" Source="/MusicPlayer;component/Image/Music.png"  >
-                                                            </Image>
-                                                            <TextBlock Margin="10 -12 10 0"  MaxWidth="80" HorizontalAlignment="Left"  FontSize="10" FontWeight="Medium" Text="{Binding Title}"/>
+                                </Style>
 
-                                                        </StackPanel>
-                                                       
-                                                    </Border>
-                                                </Button>
-                                                
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                            </WrapPanel>
-                        </ScrollViewer>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Width="auto"  HorizontalAlignment="Center" Orientation="Vertical">
+                                        <Button  Width="auto" Height="auto" Margin="0,0" Cursor="Hand"  Grid.Row="0" Grid.Column="1"  Style="{StaticResource playlistButton}" >
+                                            <Border CornerRadius="20" Margin="15,15,12,15" Width="250" Height="80" >
+                                                <Border.Background>
+                                                    <LinearGradientBrush>
+                                                        <GradientStop Color="Coral" Offset="0"/>
+                                                        <GradientStop Color="Orange" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Border.Background>
+                                                <Border.Effect>
+                                                    <DropShadowEffect BlurRadius="20" ShadowDepth="5"  Color="Red"/>
+                                                </Border.Effect>
+                                                <StackPanel   Orientation="Horizontal" HorizontalAlignment="Left" Margin="0" RenderTransformOrigin="0.5,0.5" >
+                                                    <StackPanel HorizontalAlignment="Left"  Orientation="Vertical" >
+                                                        <Image Width="70" Height="70" Margin="15 5 0 5" Source="/MusicPlayer;component/Image/Music.png"  ></Image>
+                                                    </StackPanel>
+                                                    <StackPanel HorizontalAlignment="Left" Margin="20 20"  Orientation="Vertical" >
+                                                        <TextBlock Margin="0 0 10 0"  MaxWidth="80" HorizontalAlignment="Left"  FontSize="14" FontWeight="Medium" Text="{Binding Title}"/>
+                                                        <TextBlock Margin="0 0 10 0"  MaxWidth="80" HorizontalAlignment="Left"  FontSize="12" FontStyle="Italic" FontWeight="Regular" Text="{Binding songNumber}"/>
+
+                                                    </StackPanel>
+                                                    
+
+                                                </StackPanel>
+
+                                            </Border>
+                                        </Button>
+
+                                    </StackPanel>
+
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </Border>
                     </StackPanel>
                 </Expander>

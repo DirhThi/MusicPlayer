@@ -29,19 +29,24 @@ namespace MusicPlayer.User_Control
         {
             InitializeComponent();
             List<Playlist> items = new List<Playlist>();
-            items.Add(new Playlist() { Title = "Thứ 2 tồi tệ" });
-            items.Add(new Playlist() { Title = "Nhạc vui vẻ " });
-            items.Add(new Playlist() { Title = "Nhạc buồn xĩu" });
-            items.Add(new Playlist() { Title = "Nhạc thất tình" });
-            items.Add(new Playlist() { Title = "Thứ 2 tồi tệ" });
-            items.Add(new Playlist() { Title = "Nhạc vui vẻ " });
-            items.Add(new Playlist() { Title = "Nhạc buồn xĩu" });
-            items.Add(new Playlist() { Title = "Nhạc thất tình" });
-            items.Add(new Playlist() { Title = "Learn C#" });
-            items.Add(new Playlist() { Title = "Wash the car" });
-            items.Add(new Playlist() { Title = "Learn C#" });
-
-            icPlaylist.ItemsSource = items;
+            items.Add(new Playlist() { Title = "Thứ 2 tồi tệ" , songNumber="3" });
+            items.Add(new Playlist() { Title = "Nhạc vui vẻ ", songNumber = "3" });
+            items.Add(new Playlist() { Title = "Nhạc buồn xĩu", songNumber = "3" });
+            items.Add(new Playlist() { Title = "Nhạc thất tình", songNumber = "3" });
+            items.Add(new Playlist() { Title = "Thứ 2 tồi tệ", songNumber = "3" });
+            items.Add(new Playlist() { Title = "Nhạc vui vẻ ", songNumber = "3" });
+            items.Add(new Playlist() { Title = "Nhạc buồn xĩu", songNumber = "3" });
+            items.Add(new Playlist() { Title = "Nhạc thất tình", songNumber = "3" });
+            items.Add(new Playlist() { Title = "Learn C#", songNumber = "3" });
+            items.Add(new Playlist() { Title = "Wash the car", songNumber = "3" });
+            items.Add(new Playlist() { Title = "Learn C#", songNumber = "3" });
+            items.Add(new Playlist() { Title = "Nhạc vui vẻ ", songNumber = "3" });
+            items.Add(new Playlist() { Title = "Nhạc buồn xĩu", songNumber = "3" });
+            items.Add(new Playlist() { Title = "Nhạc thất tình", songNumber = "3" });
+            items.Add(new Playlist() { Title = "Learn C#", songNumber = "3" });
+            items.Add(new Playlist() { Title = "Wash the car", songNumber = "3" });
+            items.Add(new Playlist() { Title = "Learn C#", songNumber = "3" });
+            panelPlaylist.ItemsSource = items;
 
         }
 
@@ -54,7 +59,7 @@ namespace MusicPlayer.User_Control
         {
 
             public string Title { get; set; }
-
+            public string songNumber { get; set; }
         }
 
     }

@@ -80,7 +80,7 @@
 
                                 </TextBlock>
                             </Button>
-                            <Button Click="Contin_Click" Margin="40 0"
+                            <Button x:Name="contbtn"  Margin="40 0"
                             Style="{DynamicResource MaterialDesignRaisedButton}"
                             BorderThickness="0"
                             Background="Coral"
@@ -112,7 +112,7 @@
                             <TextBlock x:Name="countSong" Text="00 Playlist" FontSize="12" FontStyle="Italic" FontWeight="Regular" Opacity="0.9" />
                         </StackPanel>
 
-                        <Button Click="Createpl_Click"
+                        <Button x:Name="createplbtn" 
                             Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                             Cursor="Hand" Margin="350 0" HorizontalAlignment="Right"  Style="{StaticResource menuButton}">
                             <StackPanel Orientation="Horizontal">
