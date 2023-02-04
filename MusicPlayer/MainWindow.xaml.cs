@@ -94,10 +94,10 @@ namespace MusicPlayer
 
                 songItems.Clear();
                 songLoad();
+                listSong_Load();
                 listsongUC.UpdateLayout();
                 listsongUC.gridSong.UpdateLayout();
                 listsongUC.gridSong.Items.Refresh();
-                listsongUC.countSong.Text = listsongUC.gridSong.Items.Count + " Bài hát";
 
                 autoorder();
             }
@@ -287,11 +287,11 @@ namespace MusicPlayer
                 }
                 songItems.Clear();
                 songLoad();
+                listSong_Load();
                 listsongUC.UpdateLayout();
                 listsongUC.gridSong.UpdateLayout();
                 listsongUC.gridSong.Items.Refresh();
-                listsongUC.countSong.Text = listsongUC.gridSong.Items.Count + " Bài hát";
-                // listSong_Load();
+
                 autoorder();
                // home_Load();            
             }
