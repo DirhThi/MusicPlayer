@@ -31,61 +31,66 @@
                     <TextBlock Text="Tất cả bài hát" Opacity="0.9"  Margin="0 0" Style="{StaticResource menuTitle}"/>
                     <TextBlock x:Name="countSong" Text="00 Bài hát" FontSize="12" FontStyle="Italic" FontWeight="Regular" Opacity="0.9" />
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" >
+                <Grid>
+                    <StackPanel x:Name="addnplay" Orientation="Horizontal" >
                     <Button Cursor="Hand"  Margin="200 0 0 0" HorizontalAlignment="Right"  Style="{StaticResource menuButton}">
                         <StackPanel Orientation="Horizontal">
                             <Icon:PackIconMaterial Kind="Play" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
                             <TextBlock Text="Phát tất cả"/>
                         </StackPanel>
                     </Button>
-                    <Button  x:Name="addsongbtn" Cursor="Hand" Margin="0 0" HorizontalAlignment="Right" Click="AddSong_Click"  Style="{StaticResource menuButton}">
+                    <Button  x:Name="addsongbtn" Cursor="Hand" Margin="0 0" HorizontalAlignment="Right"   Style="{StaticResource menuButton}">
                         <StackPanel Orientation="Horizontal">
                             <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
                             <TextBlock Text="Thêm bài hát"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>
+
+                <StackPanel Visibility="Hidden" x:Name="delnaddpl"  Orientation="Horizontal" >
+                    <Button x:Name="deleteSongbtn" Cursor="Hand"  Margin="200 0 0 0" HorizontalAlignment="Right"  Style="{StaticResource menuButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="Delete" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                            <TextBlock Text="Xóa đã chọn"/>
+                        </StackPanel>
+                    </Button>
+                    <Button  x:Name="addsongtoplbtn" Cursor="Hand" Margin="0 0" HorizontalAlignment="Right"   Style="{StaticResource menuButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="PlaylistPlus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                            <TextBlock Text="Thêm vào playlist"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                </Grid>
                 
+
             </StackPanel>
         </StackPanel>
 
 
-
-        <DataGrid  RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}"  Style="{DynamicResource DataGridStyle1}"
-            Margin="20 0 40 30"
-                   Grid.Row="1"   
-                   x:Name="gridSong"
+        <StackPanel Grid.Row="1"   Orientation="Vertical">
+            <DataGrid Height="325" MinRowHeight="45"  SelectionMode="Extended" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}"  Style="{DynamicResource DataGridStyle1}"
+                Margin="20 0 40 0"
+                        
+                       x:Name="gridSong"
                    
-                            Foreground="#22223B"
-                             >
-            <DataGrid.Columns>
-                
-                <DataGridTextColumn  Header="" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
-                <DataGridTextColumn MinWidth="150"  Header="Tên bài hát" Binding="{Binding nameSong}" IsReadOnly="True" Width="*"/>
+                                Foreground="#22223B"
+                                 >
 
-                <DataGridTextColumn MinWidth="150"  Header="Tên ca sĩ" Binding="{Binding nameArtis}" IsReadOnly="True" Width="*"/>
-                <DataGridTextColumn Width="100"  Header="Độ dài" Binding="{Binding Time}" IsReadOnly="True" />
-                <DataGridTemplateColumn Header="Tùy chọn" IsReadOnly="True" Width="auto">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel  Orientation="Horizontal">
-                                <Button Cursor="Hand" Margin="-5 0 0 0" Style="{StaticResource favoriteButton}" >
-                                    <Icon:PackIconMaterial Kind="Play" />
-                                </Button>
-                                <Button Cursor="Hand" Margin="10 0 0 0" Style="{StaticResource favoriteButton}">
-                                    <Icon:PackIconMaterial Kind="PlusBoxOutline" />
-                                </Button>
-                                <Button  x:Name="DeleteSongbtn" Cursor="Hand" Margin="10 0 0 0" Style="{StaticResource favoriteButton}" Click="Delete_Song_Click"  >
-                                    <Icon:PackIconMaterial Kind="DeleteOutline" />
-                                </Button>
-                            </StackPanel>
-                            
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                
-            </DataGrid.Columns>
-        </DataGrid>
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn  Header="" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
+                    <DataGridTextColumn MinWidth="150"  Header="Tên bài hát" Binding="{Binding nameSong}" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn MinWidth="150"  Header="Tên ca sĩ" Binding="{Binding nameArtis}" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Width="100"   Header="Thời gian" Binding="{Binding Time}" IsReadOnly="True" />
+
+
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBlock FontSize="11" Opacity="0.7" FontStyle="Italic" HorizontalAlignment="Right" Margin="50 0" Text="Nhấn giữ CTRL để chọn/bỏ chọn nhiều bài hát "></TextBlock>
+
+        </StackPanel>
+        
     </Grid>
 </UserControl>
 

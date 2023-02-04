@@ -241,9 +241,8 @@
 
                     </Trigger>
                     <Trigger Property="IsSelected" Value="True">
-                        <Setter Property="Background" Value="#C58940"/>
+                        <Setter Property="Background" Value="#f79d65"/>
                         <Setter Property="FontWeight" Value="DemiBold"/>
-                        
 
                     </Trigger>
                     <MultiTrigger>
@@ -291,6 +290,7 @@
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
                 <Setter Property="Background" Value="Transparent" />
                 <Setter Property="Foreground" Value="#69717D" />
+                <Setter Property="FontStyle" Value="Italic"></Setter>
                 <Setter Property="Margin" Value="15 0 15 10" />
                 <Setter Property="Template">
                     <Setter.Value>

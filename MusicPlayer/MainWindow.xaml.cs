@@ -71,12 +71,53 @@ namespace MusicPlayer
             homeUC.RepeatOncebtn.Click += RepeatOncebtn_Click;
             epUC.playep.Click += Playep_Click;
             listsongUC.addsongbtn.Click += Addsongbtn_Click;
+            listsongUC.gridSong.SelectionChanged += GridSong_SelectionChanged;
             playlistUC.contbtn.Click += Contbtn_Click;
             playlistUC.createplbtn.Click += Createplbtn_Click;
             playlistUC.cancelDialog.Click += CancelDialog_Click;
+            listsongUC.deleteSongbtn.Click += DeleteSongbtn_Click;
             listSong_Load();
             home_Load();
             playlistUC_Load();
+        }
+
+        private void DeleteSongbtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc muốn xóa tất cả bài hát đã chọn ? " , "Question", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                for(int i=0; i<listsongUC.gridSong.SelectedItems.Count;i++)
+                {
+                    int t = listsongUC.gridSong.Items.IndexOf(listsongUC.gridSong.SelectedItems[i]);
+                    File.Delete(songItems[t].filePath);
+
+                }
+
+                songItems.Clear();
+                songLoad();
+                listsongUC.UpdateLayout();
+                listsongUC.gridSong.UpdateLayout();
+                listsongUC.gridSong.Items.Refresh();
+                listsongUC.countSong.Text = listsongUC.gridSong.Items.Count + " Bài hát";
+
+                autoorder();
+            }
+            
+            
+            
+        }
+
+        private void GridSong_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (listsongUC.gridSong.SelectedItems.Count >= 1)
+            {
+                listsongUC.addnplay.Visibility = Visibility.Hidden;
+                listsongUC.delnaddpl.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                listsongUC.addnplay.Visibility = Visibility.Visible;
+                listsongUC.delnaddpl.Visibility = Visibility.Hidden;
+            }
         }
 
         private void CancelDialog_Click(object sender, RoutedEventArgs e)
@@ -221,6 +262,7 @@ namespace MusicPlayer
         }
         private void  listSong_Load()
         {
+
             listsongUC.gridSong.ItemsSource = songItems;
             listsongUC.countSong.Text = listsongUC.gridSong.Items.Count + " Bài hát";
             
@@ -245,9 +287,13 @@ namespace MusicPlayer
                 }
                 songItems.Clear();
                 songLoad();
-                listSong_Load();
+                listsongUC.UpdateLayout();
+                listsongUC.gridSong.UpdateLayout();
+                listsongUC.gridSong.Items.Refresh();
+                listsongUC.countSong.Text = listsongUC.gridSong.Items.Count + " Bài hát";
+                // listSong_Load();
                 autoorder();
-                home_Load();            
+               // home_Load();            
             }
         }
 
