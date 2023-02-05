@@ -78,9 +78,91 @@ namespace MusicPlayer
             listsongUC.deleteSongbtn.Click += DeleteSongbtn_Click;
             homeUC.panelPlaylist.SelectionChanged += PanelPlaylist_SelectionChanged;
             listsongUC.playAllsongbtn.Click += PlayAllsongbtn_Click;
+            playlistUC.playPlaylistbtn.Click += PlayPlaylistbtn_Click;
+            playlistUC.datagridSongPlaylist.SelectionChanged += DatagridSongPlaylist_SelectionChanged;
+            playlistUC.deleteSongbtn.Click += DeleteSongbtn_Click1;
             listSong_Load();
             home_Load();
             playlistUC_Load();
+        }
+
+        private void DeleteSongbtn_Click1(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc muốn xóa tất cả bài hát đã chọn khỏi Playlist ? ", "Question", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                Playlist P = new Playlist();
+                for (int i = 0; i < playlistsItems.Count; i++)
+                {
+                    if (playlistsItems[i].Title == playlistUC.namePlaylistSong.Text)
+                    {
+                        P = playlistsItems[i];
+                    }
+                }
+                List<string> songPlaylisttoString = File.ReadAllLines(P.PlaylistPath).ToList();
+                for (int i = 0; i < playlistUC.datagridSongPlaylist.SelectedItems.Count; i++)
+                {
+                    
+                    int t = playlistUC.datagridSongPlaylist.Items.IndexOf(playlistUC.datagridSongPlaylist.SelectedItems[i]);
+                    songPlaylisttoString.RemoveAt(t);
+                }
+                File.WriteAllLines(P.PlaylistPath, songPlaylisttoString.ToArray());
+
+                //load song again
+                List<Song> songPlaylist = new List<Song>();
+                foreach (string line in File.ReadLines(P.PlaylistPath))
+                {
+                    for (int i = 0; i < songItems.Count; i++)
+                    {
+                        if (System.IO.Path.GetFileName(songItems[i].filePath) == line)
+                        {
+                            songPlaylist.Add(songItems[i]);
+                        }
+                    }
+                }
+
+                //sap xep stt
+                {
+                    int t = 1;
+                    for (int i = 0; i < songPlaylist.Count; i++)
+                    {
+                        songPlaylist[i].Number = t;
+                        t++;
+                    }
+                }
+                playlistUC.datagridSongPlaylist.ItemsSource = songPlaylist;
+                playlistUC.UpdateLayout();
+                playlistUC.datagridSongPlaylist.UpdateLayout();
+                playlistUC.datagridSongPlaylist.Items.Refresh();
+                playlistUC.countSong.Text = songPlaylist.Count + " Bài hát";
+            }
+
+        }
+
+        private void DatagridSongPlaylist_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           if(playlistUC.datagridSongPlaylist.SelectedItems.Count>=1)
+            {
+                playlistUC.deletePlnplayPlbtn.Visibility = Visibility.Hidden;
+                playlistUC.deleteSong.Visibility = Visibility.Visible;
+            }
+           else
+            {
+                playlistUC.deletePlnplayPlbtn.Visibility = Visibility.Visible;
+                playlistUC.deleteSong.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void PlayPlaylistbtn_Click(object sender, RoutedEventArgs e)
+        {
+            int indexPlaylist = -1;
+            for(int i=0;i<playlistsItems.Count;i++)
+            {
+                if(playlistsItems[i].Title==playlistUC.namePlaylistSong.Text)
+                {
+                    indexPlaylist = i;
+                }
+            }
+            homeUC.panelPlaylist.SelectedIndex = indexPlaylist;
         }
 
         private void PlayAllsongbtn_Click(object sender, RoutedEventArgs e)
@@ -100,7 +182,6 @@ namespace MusicPlayer
             var item = (ListBox)sender;
             Playlist Playlist = playlistsItems.ElementAt(item.SelectedIndex);
             List<Song> songPlaylist = new List<Song>();
-
             foreach (string line in File.ReadLines(Playlist.PlaylistPath))
             {
                 for (int i = 0; i < songItems.Count; i++)
