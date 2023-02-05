@@ -22,6 +22,8 @@ namespace MusicPlayer.User_Control
            
         }
 
+
+
         private void Playlist_Click(object sender, RoutedEventArgs e)
         {
             gridPlaylist.Visibility = Visibility.Hidden;
@@ -37,6 +39,16 @@ namespace MusicPlayer.User_Control
                     {
                         songPlaylist.Add(MainWindow.songItems[i]);
                     }
+                }
+            }
+            
+            //sap xep stt
+            {
+                int t = 1;
+                for (int i = 0; i < songPlaylist.Count; i++)
+                {
+                    songPlaylist[i].Number = t;
+                    t++;
                 }
             }
             datagridSongPlaylist.ItemsSource = songPlaylist;

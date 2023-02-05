@@ -10,7 +10,70 @@
                 Name="dsBaiHat"
                 Height="540" Width="780" 
                 >
-    <Grid Background="#F8F4EA">
+    <materialDesign:DialogHost
+        x:Name="Dialog"
+  CloseOnClickAway="False"
+  HorizontalAlignment="Center"
+  VerticalAlignment="Center">
+        <materialDesign:DialogHost.DialogContent>
+            <Grid>
+                <Border CornerRadius="10" Background="Beige" Width="550" Height="400">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Thêm vào playlist" Opacity="0.9"  Margin="15 10" Style="{StaticResource menuTitle}"/>
+
+                            <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                                Margin="300 0 0 0"  Style="{StaticResource favoriteButton}">
+                                <Border CornerRadius="20"  Background="Transparent" Width="30" Height="30" Margin="0">
+                                    <Icon:PackIconMaterial Foreground="Black" Kind="Close" VerticalAlignment="Center" Margin="9" Width="11" Height="11"/>
+                                </Border>
+                            </Button>
+                        </StackPanel>
+
+                        <ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto">
+                            <WrapPanel  ItemHeight="auto" ItemWidth="auto" x:Name="panelPlaylist" Orientation="Horizontal" Background="Transparent"  Margin="20 15 40 30" >
+                                <ItemsControl Name="icPlaylist">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Width="120" Margin="30,0,10,10" HorizontalAlignment="Center" Orientation="Vertical">
+                                                <Button  
+                                                         Width="auto" Height="auto" Margin="0,0" Cursor="Hand"  Grid.Row="0" Grid.Column="1"  Style="{StaticResource playlistButton}" Click="playlistbtn"  >
+                                                    <Border CornerRadius="20" Margin="0,0,0,0" Width="100" Height="100" >
+                                                        <Border.Background>
+                                                            <LinearGradientBrush>
+                                                                <GradientStop Color="Coral" Offset="0"/>
+                                                                <GradientStop Color="Orange" Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Border.Background>
+                                                        <Border.Effect>
+                                                            <DropShadowEffect BlurRadius="20" ShadowDepth="5"  Color="Red"/>
+                                                        </Border.Effect>
+                                                        <Image Source="/MusicPlayer;component/Image/Music.png" Margin="20" >
+                                                        </Image>
+                                                    </Border>
+                                                </Button>
+
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 10" RenderTransformOrigin="0.5,0.5" >
+                                                    <TextBlock  MaxWidth="90" HorizontalAlignment="Left"  FontSize="14" FontWeight="Medium" Text="{Binding Title}"/>
+                                                    
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </WrapPanel>
+                        </ScrollViewer>
+
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </materialDesign:DialogHost.DialogContent>
+        <Grid Background="#F8F4EA">
         <Grid.ColumnDefinitions>
 
             
@@ -54,7 +117,9 @@
                             <TextBlock Text="Xóa đã chọn"/>
                         </StackPanel>
                     </Button>
-                    <Button  x:Name="addsongtoplbtn" Cursor="Hand" Margin="0 0" HorizontalAlignment="Right"   Style="{StaticResource menuButton}">
+                    <Button 
+                        Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                        x:Name="addsongtoplbtn" Cursor="Hand" Margin="0 0" HorizontalAlignment="Right"   Style="{StaticResource menuButton}">
                         <StackPanel Orientation="Horizontal">
                             <Icon:PackIconMaterial Kind="PlaylistPlus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
                             <TextBlock Text="Thêm vào playlist"/>
@@ -92,5 +157,7 @@
         </StackPanel>
         
     </Grid>
+    </materialDesign:DialogHost>
+
 </UserControl>
 

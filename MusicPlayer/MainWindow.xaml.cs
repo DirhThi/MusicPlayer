@@ -113,6 +113,15 @@ namespace MusicPlayer
             }
             currentPlaylist.Clear();
             currentPlaylist = songPlaylist;
+            //sap xep stt
+            {
+                int t = 1;
+                for (int i = 0; i < songPlaylist.Count; i++)
+                {
+                    songPlaylist[i].Number = t;
+                    t++;
+                }
+            }
             homeUC.lsbTopSongs.ItemsSource = currentPlaylist;
             homeUC.UpdateLayout();
             homeUC.lsbTopSongs.UpdateLayout();
@@ -240,6 +249,7 @@ namespace MusicPlayer
                     playlistUC.countPlaylist.Text = playlistsItems.Count + " Playlist";
                     playlistUC.icPlaylist.Items.Refresh();
                     homeUC.panelPlaylist.Items.Refresh();
+                    listsongUC.icPlaylist.Items.Refresh();
 
                 }
 
@@ -308,12 +318,14 @@ namespace MusicPlayer
         {
             homeUC.lsbTopSongs.ItemsSource = currentPlaylist;
             homeUC.panelPlaylist.ItemsSource = playlistsItems;
+
         }
         private void  listSong_Load()
         {
 
             listsongUC.gridSong.ItemsSource = songItems;
             listsongUC.countSong.Text = listsongUC.gridSong.Items.Count + " Bài hát";
+            listsongUC.icPlaylist.ItemsSource = playlistsItems;    
             
         }
         private void Addsongbtn_Click(object sender, RoutedEventArgs e)
@@ -526,6 +538,7 @@ namespace MusicPlayer
             listsongUC.UpdateLayout();
             listsongUC.gridSong.UpdateLayout();
             listsongUC.gridSong.Items.Refresh();
+            
 
         }
 

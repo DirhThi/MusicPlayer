@@ -198,9 +198,9 @@
                                             </Border>
                                         </Button>
 
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5 10 -5 10" RenderTransformOrigin="0.5,0.5" >
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 10" RenderTransformOrigin="0.5,0.5" >
                                             <TextBlock  MaxWidth="90" HorizontalAlignment="Left"  FontSize="14" FontWeight="Medium" Text="{Binding Title}"/>
-                                            <materialDesign:PopupBox 
+                                            <!--<materialDesign:PopupBox 
                                                 PlacementMode="RightAndAlignBottomEdges">
                                                 <materialDesign:PopupBox.ToggleContent>
                                                     <materialDesign:PackIcon Kind="DotsVertical" />
@@ -222,7 +222,7 @@
                                                         </StackPanel>
                                                     </Border>
                                                 </materialDesign:PopupBox.PopupContent>
-                                            </materialDesign:PopupBox>
+                                            </materialDesign:PopupBox>-->
                                         </StackPanel>
                                     </StackPanel>
                                 </DataTemplate>

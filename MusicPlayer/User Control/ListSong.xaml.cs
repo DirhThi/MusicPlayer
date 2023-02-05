@@ -26,7 +26,6 @@ namespace MusicPlayer.User_Control
     public partial class ListSong : UserControl
     {
 
-        List<Song> songItems = MainWindow.songItems;
         public ListSong()
         {
             InitializeComponent();      
@@ -35,49 +34,38 @@ namespace MusicPlayer.User_Control
 
         }
 
-        private void AddSong_Click(object sender, RoutedEventArgs e)
+        private void playlistbtn(object sender, RoutedEventArgs e)
         {
-
-        
-        }
-
-        private void autoorder()
-        {
-            int t = 1;
-            for (int i = 0; i < songItems.Count; i++)
+            Playlist P = (sender as Button).DataContext as Playlist;
+            if (MessageBox.Show("Thêm các bài hát đã chọn vào Playlist : " + P.Title, "Question", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                songItems[i].Number = t;
-                t++;
-            }
-        }
+               
+                    for (int i = 0; i < gridSong.SelectedItems.Count; i++)
+                    {
+                        int check = 0;
+                        int t = gridSong.Items.IndexOf(gridSong.SelectedItems[i]);
+                        foreach (string line in File.ReadLines(P.PlaylistPath))
+                        {
+                            if (System.IO.Path.GetFileName(MainWindow.songItems[t].filePath) == line)
+                            {
+                            check = 1;
+                            }
 
-        private void Delete_Song_Click(object sender, RoutedEventArgs e)
-        {
-            Song S = (sender as Button).DataContext as Song;
+                        }
+                        if(check==0)
+                        {
+                            StreamWriter w = new StreamWriter(P.PlaylistPath, true);
+                            string s = System.IO.Path.GetFileName(MainWindow.songItems[t].filePath);
+                            w.WriteLine(s);
+                            w.Close();
+                        }
 
-            if (MessageBox.Show("Bạn có chắc muốn xóa bài hát : "+S.nameSong, "Question", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                File.Delete(S.filePath);
-                MainWindow.songItems.RemoveAt(gridSong.Items.IndexOf(gridSong.SelectedItem));
-                songItems = MainWindow.songItems;
-                gridSong.ItemsSource = songItems;
-                
+                    }
+               
+                Dialog.IsOpen = false;
+                MessageBox.Show("Thêm thành công !");
             }
-            else
-            {
-            }
-            autoorder();
-            MessageBox.Show(MainWindow.songItems.Count().ToString());
-            
-        }
-
-        private void Play_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow.currentPlaylist = songItems;
-            Song S = (sender as Button).DataContext as Song;
-            MainWindow.songPlaying = S;
-            
-        }
+        }   
     }
 
   
