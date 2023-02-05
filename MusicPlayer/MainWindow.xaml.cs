@@ -76,9 +76,48 @@ namespace MusicPlayer
             playlistUC.createplbtn.Click += Createplbtn_Click;
             playlistUC.cancelDialog.Click += CancelDialog_Click;
             listsongUC.deleteSongbtn.Click += DeleteSongbtn_Click;
+            homeUC.panelPlaylist.SelectionChanged += PanelPlaylist_SelectionChanged;
+            listsongUC.playAllsongbtn.Click += PlayAllsongbtn_Click;
             listSong_Load();
             home_Load();
             playlistUC_Load();
+        }
+
+        private void PlayAllsongbtn_Click(object sender, RoutedEventArgs e)
+        {
+            currentPlaylist.Clear();
+            currentPlaylist = songItems;
+            homeUC.lsbTopSongs.ItemsSource = currentPlaylist;
+            homeUC.UpdateLayout();
+            homeUC.lsbTopSongs.UpdateLayout();
+            homeUC.lsbTopSongs.Items.Refresh();
+            homeUC.lsbTopSongs.SelectedIndex = 0;
+
+        }
+
+        private void PanelPlaylist_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = (ListBox)sender;
+            Playlist Playlist = playlistsItems.ElementAt(item.SelectedIndex);
+            List<Song> songPlaylist = new List<Song>();
+
+            foreach (string line in File.ReadLines(Playlist.PlaylistPath))
+            {
+                for (int i = 0; i < songItems.Count; i++)
+                {
+                    if (System.IO.Path.GetFileName(songItems[i].filePath) == line)
+                    {
+                        songPlaylist.Add(songItems[i]);
+                    }
+                }
+            }
+            currentPlaylist.Clear();
+            currentPlaylist = songPlaylist;
+            homeUC.lsbTopSongs.ItemsSource = currentPlaylist;
+            homeUC.UpdateLayout();
+            homeUC.lsbTopSongs.UpdateLayout();
+            homeUC.lsbTopSongs.Items.Refresh();
+            homeUC.lsbTopSongs.SelectedIndex = 0;
         }
 
         private void DeleteSongbtn_Click(object sender, RoutedEventArgs e)
@@ -174,26 +213,36 @@ namespace MusicPlayer
             }
             else
             {
-                var currentDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-                string projectDirectory = currentDirectory.Parent.Parent.Parent.FullName;
-                string destinationDirectory = projectDirectory + "\\MusicPlayer\\Playlists\\";
-                string PlaylistPath = destinationDirectory + playlistUC.namePlaylist.Text + ".txt";
-                //  File.Copy(fileName, destinationDirectory + Path.GetFileName(fileName));
-                StreamWriter w = new StreamWriter(PlaylistPath, true);
-
-
-                for (int i = 0; i < playlistUC.lbSelectSong.SelectedItems.Count; i++)
+                if(playlistUC.lbSelectSong.SelectedItems.Count<1)
                 {
-                    int t = playlistUC.lbSelectSong.Items.IndexOf(playlistUC.lbSelectSong.SelectedItems[i]);
-                    string s = System.IO.Path.GetFileName(songItems[i].filePath);
-                    w.WriteLine(s);
+                    MessageBox.Show("Vui lòng chọn ít nhất 1 bài hát !");
                 }
-                w.Close();
-                playlistUC.Dialog.IsOpen = false;
-                playlistsItems.Clear();
-                PlaylistLoad();
-                playlistUC.icPlaylist.Items.Refresh();
-                homeUC.panelPlaylist.Items.Refresh();
+                else
+                {
+                    var currentDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+                    string projectDirectory = currentDirectory.Parent.Parent.Parent.FullName;
+                    string destinationDirectory = projectDirectory + "\\MusicPlayer\\Playlists\\";
+                    string PlaylistPath = destinationDirectory + playlistUC.namePlaylist.Text + ".txt";
+                    //  File.Copy(fileName, destinationDirectory + Path.GetFileName(fileName));
+                    StreamWriter w = new StreamWriter(PlaylistPath, true);
+
+
+                    for (int i = 0; i < playlistUC.lbSelectSong.SelectedItems.Count; i++)
+                    {
+                        int t = playlistUC.lbSelectSong.Items.IndexOf(playlistUC.lbSelectSong.SelectedItems[i]);
+                        string s = System.IO.Path.GetFileName(songItems[i].filePath);
+                        w.WriteLine(s);
+                    }
+                    w.Close();
+                    playlistUC.Dialog.IsOpen = false;
+                    playlistsItems.Clear();
+                    PlaylistLoad();
+                    playlistUC.countPlaylist.Text = playlistsItems.Count + " Playlist";
+                    playlistUC.icPlaylist.Items.Refresh();
+                    homeUC.panelPlaylist.Items.Refresh();
+
+                }
+
 
 
 
@@ -257,7 +306,7 @@ namespace MusicPlayer
         }
         private void home_Load()
         {
-            homeUC.lsbTopSongs.ItemsSource = songItems;
+            homeUC.lsbTopSongs.ItemsSource = currentPlaylist;
             homeUC.panelPlaylist.ItemsSource = playlistsItems;
         }
         private void  listSong_Load()
@@ -346,16 +395,21 @@ namespace MusicPlayer
 
         private void LsbTopSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
             var item = (ListBox)sender;
             int indexSong = item.SelectedIndex;
-            currentIndex = indexSong;
-            songPlaying = songItems.ElementAt(currentIndex);
-            displaySongPlaying(songPlaying);
-            mp3Player.Source = new Uri(songPlaying.filePath);
-            mp3Player.Play();  
-            trangthai = 1;
-            Mp3Lib.Mp3File Song = new Mp3Lib.Mp3File(songPlaying.filePath);
-            slider.Maximum = Convert.ToInt32(Song.Audio.Duration);
+            if( indexSong >=0 )
+            {
+                currentIndex = indexSong;
+                songPlaying = currentPlaylist.ElementAt(currentIndex);
+                displaySongPlaying(songPlaying);
+                mp3Player.Source = new Uri(songPlaying.filePath);
+                mp3Player.Play();  
+                trangthai = 1;
+                Mp3Lib.Mp3File Song = new Mp3Lib.Mp3File(songPlaying.filePath);
+                slider.Maximum = Convert.ToInt32(Song.Audio.Duration);
+            }
+           
         }
 
        
@@ -458,9 +512,7 @@ namespace MusicPlayer
         {
             songItems = new List<Song>();
             songLoad();
-
-            MenuBtnChoose(btnHome);
-            
+            MenuBtnChoose(btnHome);           
             UCChoose(homeUC);
         }
 
@@ -470,10 +522,16 @@ namespace MusicPlayer
             songLoad();
             MenuBtnChoose(btnSong);
             UCChoose(listsongUC);
+            listSong_Load();
+            listsongUC.UpdateLayout();
+            listsongUC.gridSong.UpdateLayout();
+            listsongUC.gridSong.Items.Refresh();
+
         }
 
         private void Playlist_Click(object sender, RoutedEventArgs e)
         {
+            
             MenuBtnChoose(btnPlaylist);
             UCChoose(playlistUC);
             playlistUC.fieldNamePl.Visibility = Visibility.Visible;

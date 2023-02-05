@@ -15,9 +15,6 @@ namespace MusicPlayer.User_Control
     /// </summary>
     public partial class PlayList : UserControl
     {
-        List<Song> songItems = MainWindow.songItems;
-        int TrangThaiP = 0;//0 Khoi tao , 1 chon bai hat
-        List<Playlist> playlistsItems= new List<Playlist>();
         public PlayList()
         {
 
@@ -34,11 +31,11 @@ namespace MusicPlayer.User_Control
 
             foreach (string line in File.ReadLines(Playlist.PlaylistPath))
             {
-                for(int i=0;i<songItems.Count;i++)
+                for(int i=0;i < MainWindow.songItems.Count;i++)
                 {
-                    if(System.IO.Path.GetFileName(songItems[i].filePath)==line)
+                    if(System.IO.Path.GetFileName(MainWindow.songItems[i].filePath)==line)
                     {
-                        songPlaylist.Add(songItems[i]);
+                        songPlaylist.Add(MainWindow.songItems[i]);
                     }
                 }
             }

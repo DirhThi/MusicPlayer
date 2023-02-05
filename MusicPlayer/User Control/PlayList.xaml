@@ -107,14 +107,14 @@
                 <StackPanel Grid.Column="0" Background="Transparent" Margin="20 20 10 10">
                     <TextBlock Text="Playlist" Margin="5 0" FontSize="30" Style="{StaticResource menuTitle}"/>
                     <StackPanel Orientation="Horizontal" Grid.Column="0" Background="Transparent" Margin="40 30 0 0">
-                        <StackPanel Orientation="Vertical" Grid.Column="0" Background="Transparent" >
+                        <StackPanel Width="450" Background="Red" Orientation="Vertical" Grid.Column="0"  >
                             <TextBlock x:Name="namePlaylistSong" Text="Playlist" Opacity="0.9"  Margin="0 0" Style="{StaticResource menuTitle}"/>
                             <TextBlock x:Name="countSong" Text="00 Playlist" FontSize="12" FontStyle="Italic" FontWeight="Regular" Opacity="0.9" />
                         </StackPanel>
 
                         <Button 
                             Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
-                            Cursor="Hand" Margin="350 0" HorizontalAlignment="Right"  Style="{StaticResource menuButton}">
+                            Cursor="Hand" Margin="0 0" HorizontalAlignment="Right"  Style="{StaticResource menuButton}">
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Play" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
                                 <TextBlock Text="Phát toàn bộ"/>

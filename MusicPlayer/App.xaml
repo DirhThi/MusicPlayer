@@ -188,6 +188,28 @@
                 </Style.Triggers>
             </Style>
 
+            <Style x:Key="playlistBorder" TargetType="Border">
+                <Setter Property="Background" Value="Transparent"/>
+
+                <Setter Property="Height" Value="50"/>
+
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+
+
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="BorderBrush" Value="Black"/>
+                        <Setter Property="Effect"  >
+                            <Setter.Value>
+                                <DropShadowEffect Color="#89C4E1" BlurRadius="3" ShadowDepth="3" />
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Tag" Value="Visible"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
             <Style x:Key="menuButtonIcon" TargetType="Icon:PackIconMaterial">
                 <Setter Property="HorizontalAlignment" Value="Right"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>

@@ -103,7 +103,7 @@
                     <Border  CornerRadius="20" Background="Transparent" Height="360" Width="320">
                     <!--<ScrollViewer ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Background="Transparent" Margin="-10,0" Grid.Row="1" Grid.Column="0">
                         </ScrollViewer>-->
-                        <ListBox Width="300"    ScrollViewer.VerticalScrollBarVisibility="Hidden"  x:Name="panelPlaylist"  HorizontalContentAlignment="Stretch" SelectionMode="Multiple"   >
+                        <ListBox Width="300"    ScrollViewer.VerticalScrollBarVisibility="Hidden"  x:Name="panelPlaylist"  HorizontalContentAlignment="Stretch" SelectionMode="Single"   >
                             <ListBox.ItemContainerStyle>
                                 <Style TargetType="{x:Type ListBoxItem}">
                                     <Setter Property="Focusable" Value="True"/>
@@ -114,7 +114,7 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Width="auto"  HorizontalAlignment="Center" Orientation="Vertical">
-                                        <Button  Width="auto" Height="auto" Margin="0,0" Cursor="Hand"  Grid.Row="0" Grid.Column="1"  Style="{StaticResource playlistButton}" >
+                                        <Border  Width="auto" Height="auto" Margin="0,0" Cursor="Hand"  Grid.Row="0" Grid.Column="1"  Style="{StaticResource playlistBorder}" >
                                             <Border CornerRadius="20" Margin="15,15,12,15" Width="250" Height="80" >
                                                 <Border.Background>
                                                     <LinearGradientBrush>
@@ -139,7 +139,7 @@
                                                 </StackPanel>
 
                                             </Border>
-                                        </Button>
+                                        </Border>
 
                                     </StackPanel>
 
