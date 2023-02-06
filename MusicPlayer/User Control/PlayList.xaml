@@ -113,7 +113,7 @@
                         </StackPanel>
                         <Grid>
                             <StackPanel x:Name="deletePlnplayPlbtn" Orientation="Horizontal">
-                            <Button 
+                            <Button x:Name="deletePlbtn"
                             Cursor="Hand" Margin="0 0" HorizontalAlignment="Right"  Style="{StaticResource menuButton}">
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Delete" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
@@ -145,7 +145,7 @@
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Grid.Row="1"   Orientation="Vertical">
-                    <DataGrid MaxHeight="300" MinRowHeight="45" Grid.RowSpan="1"  RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}"  Style="{DynamicResource DataGridStyle1}"
+                    <DataGrid MaxHeight="300" MinRowHeight="41" Grid.RowSpan="1"  RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}"  Style="{DynamicResource DataGridStyle1}"
             Margin="20 0 40 00"
                     
                    x:Name="datagridSongPlaylist"

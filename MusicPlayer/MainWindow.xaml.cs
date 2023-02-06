@@ -81,9 +81,35 @@ namespace MusicPlayer
             playlistUC.playPlaylistbtn.Click += PlayPlaylistbtn_Click;
             playlistUC.datagridSongPlaylist.SelectionChanged += DatagridSongPlaylist_SelectionChanged;
             playlistUC.deleteSongbtn.Click += DeleteSongbtn_Click1;
+            playlistUC.deletePlbtn.Click += DeletePlbtn_Click;
             listSong_Load();
             home_Load();
             playlistUC_Load();
+        }
+
+        private void DeletePlbtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc muốn xóa tất cả bài hát đã chọn khỏi Playlist ? ", "Question", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                Playlist P = new Playlist();
+                for (int i = 0; i < playlistsItems.Count; i++)
+                {
+                    if (playlistsItems[i].Title == playlistUC.namePlaylistSong.Text)
+                    {
+                        P = playlistsItems[i];
+                    }
+                   
+
+                }
+                playlistsItems.RemoveAt(playlistsItems.IndexOf(P));     
+                playlistUC.countPlaylist.Text = playlistsItems.Count + " Playlist";
+                playlistUC.icPlaylist.Items.Refresh();
+                homeUC.panelPlaylist.SelectedIndex = -1;
+                homeUC.panelPlaylist.Items.Refresh();
+                listsongUC.icPlaylist.Items.Refresh();
+                playlistUC.gridPlaylist.Visibility = Visibility.Visible;
+                playlistUC.gridSongPlaylist.Visibility = Visibility.Hidden;
+            }
         }
 
         private void DeleteSongbtn_Click1(object sender, RoutedEventArgs e)
@@ -180,34 +206,38 @@ namespace MusicPlayer
         private void PanelPlaylist_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var item = (ListBox)sender;
-            Playlist Playlist = playlistsItems.ElementAt(item.SelectedIndex);
-            List<Song> songPlaylist = new List<Song>();
-            foreach (string line in File.ReadLines(Playlist.PlaylistPath))
+            if(item.SelectedIndex>=0)
             {
-                for (int i = 0; i < songItems.Count; i++)
+                Playlist Playlist = playlistsItems.ElementAt(item.SelectedIndex);
+                List<Song> songPlaylist = new List<Song>();
+                foreach (string line in File.ReadLines(Playlist.PlaylistPath))
                 {
-                    if (System.IO.Path.GetFileName(songItems[i].filePath) == line)
+                    for (int i = 0; i < songItems.Count; i++)
                     {
-                        songPlaylist.Add(songItems[i]);
+                        if (System.IO.Path.GetFileName(songItems[i].filePath) == line)
+                        {
+                            songPlaylist.Add(songItems[i]);
+                        }
                     }
                 }
-            }
-            currentPlaylist.Clear();
-            currentPlaylist = songPlaylist;
-            //sap xep stt
-            {
-                int t = 1;
-                for (int i = 0; i < songPlaylist.Count; i++)
+                currentPlaylist.Clear();
+                currentPlaylist = songPlaylist;
+                //sap xep stt
                 {
-                    songPlaylist[i].Number = t;
-                    t++;
+                    int t = 1;
+                    for (int i = 0; i < songPlaylist.Count; i++)
+                    {
+                        songPlaylist[i].Number = t;
+                        t++;
+                    }
                 }
+                homeUC.lsbTopSongs.ItemsSource = currentPlaylist;
+                homeUC.UpdateLayout();
+                homeUC.lsbTopSongs.UpdateLayout();
+                homeUC.lsbTopSongs.Items.Refresh();
+                homeUC.lsbTopSongs.SelectedIndex = 0;
             }
-            homeUC.lsbTopSongs.ItemsSource = currentPlaylist;
-            homeUC.UpdateLayout();
-            homeUC.lsbTopSongs.UpdateLayout();
-            homeUC.lsbTopSongs.Items.Refresh();
-            homeUC.lsbTopSongs.SelectedIndex = 0;
+            
         }
 
         private void DeleteSongbtn_Click(object sender, RoutedEventArgs e)
@@ -353,6 +383,8 @@ namespace MusicPlayer
             playlistUC.lbSelectSong.ItemsSource = songItems;
             playlistUC.gridPlaylist.Visibility = Visibility.Visible;
             playlistUC.gridSongPlaylist.Visibility = Visibility.Hidden;
+            playlistUC.Dialog.IsOpen = false;
+
 
         }
 
@@ -536,6 +568,7 @@ namespace MusicPlayer
                 songItems.Add(new Song() { Number = i, nameSong = Song.TagHandler.Title, nameArtis = Song.TagHandler.Artist, Time = t,filePath=(destinationDirectory + fileSong.Name) });
                 
                 i++;
+               
             }
         }
         private void addUserControl(UserControl uc)
@@ -628,11 +661,16 @@ namespace MusicPlayer
             
             MenuBtnChoose(btnPlaylist);
             UCChoose(playlistUC);
+
+            playlistUC.icPlaylist.ItemsSource = playlistsItems;
             playlistUC.fieldNamePl.Visibility = Visibility.Visible;
             playlistUC.selectSong.Visibility = Visibility.Hidden;
+            playlistUC.tb_btn_createPlaylis.Text = "Tiếp tục";
+            playlistUC.countPlaylist.Text = playlistsItems.Count + " Playlist";
+            playlistUC.lbSelectSong.ItemsSource = songItems;
+            playlistUC.lbSelectSong.Items.Refresh();
             playlistUC.gridPlaylist.Visibility = Visibility.Visible;
             playlistUC.gridSongPlaylist.Visibility = Visibility.Hidden;
-            playlistUC.fieldNamePl.Visibility = Visibility.Visible;
             playlistUC.Dialog.IsOpen = false;
         }
 

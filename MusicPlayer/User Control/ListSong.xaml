@@ -134,7 +134,7 @@
 
 
         <StackPanel Grid.Row="1"   Orientation="Vertical">
-            <DataGrid Height="325" MinRowHeight="45"  SelectionMode="Extended" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}"  Style="{DynamicResource DataGridStyle1}"
+            <DataGrid Height="300" MinRowHeight="41"  SelectionMode="Extended" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}"  Style="{DynamicResource DataGridStyle1}"
                 Margin="20 0 40 0"
                         
                        x:Name="gridSong"
