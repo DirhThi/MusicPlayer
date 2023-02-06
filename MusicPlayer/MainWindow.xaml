@@ -108,7 +108,7 @@
 
             <StackPanel  Margin="20 0 0 0" VerticalAlignment="Center"  Orientation="Vertical">
                 <StackPanel x:Name="playingPanel"  VerticalAlignment="Center"  Orientation="Horizontal">
-                    <Ellipse Width="80" Height="80" Margin="5 0 0 0">
+                     <Ellipse x:Name="songPictureDisplay" Width="80" Height="80" Margin="5 0 0 0">
                         <Ellipse.Fill>
                             <LinearGradientBrush>
                                 <GradientStop Color="DarkBlue" Offset="0"/>

@@ -17,6 +17,7 @@ using MusicPlayer.Properties;
 using Microsoft.Win32;
 using System.IO;
 using System.ComponentModel;
+using WMPLib;
 
 
 
@@ -85,6 +86,8 @@ namespace MusicPlayer
             listSong_Load();
             home_Load();
             playlistUC_Load();
+
+            
         }
 
         private void DeletePlbtn_Click(object sender, RoutedEventArgs e)
@@ -110,6 +113,7 @@ namespace MusicPlayer
                 playlistUC.gridPlaylist.Visibility = Visibility.Visible;
                 playlistUC.gridSongPlaylist.Visibility = Visibility.Hidden;
             }
+             
         }
 
         private void DeleteSongbtn_Click1(object sender, RoutedEventArgs e)
@@ -548,6 +552,15 @@ namespace MusicPlayer
             tbBaiHat.Text = s.nameSong;
             tbCaSi.Text = s.nameArtis;
             tbTime.Text = s.Time;
+            var bitmap = new System.Drawing.Bitmap(s.imageSong);
+            var bitmapSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(bitmap.GetHbitmap(),
+                                                                            IntPtr.Zero,
+                                                                            Int32Rect.Empty,
+                                                                            BitmapSizeOptions.FromEmptyOptions()
+            );
+            bitmap.Dispose();
+            var brush = new ImageBrush(bitmapSource);
+            songPictureDisplay.Fill = brush;
             
         }
 
@@ -564,8 +577,8 @@ namespace MusicPlayer
                 Mp3Lib.Mp3File Song = new Mp3Lib.Mp3File(destinationDirectory + fileSong.Name);
                 int durationSong = Convert.ToInt32(Song.Audio.Duration);
                 string t = (durationSong / 60).ToString("00") + ":"+ (durationSong % 60).ToString("00");
-                
-                songItems.Add(new Song() { Number = i, nameSong = Song.TagHandler.Title, nameArtis = Song.TagHandler.Artist, Time = t,filePath=(destinationDirectory + fileSong.Name) });
+                Song.TagHandler.Lyrics = "lyrics here";
+                songItems.Add(new Song() { Number = i, nameSong = Song.TagHandler.Title, nameArtis = Song.TagHandler.Artist, Time = t,filePath=(destinationDirectory + fileSong.Name),imageSong=Song.TagHandler.Picture });
                 
                 i++;
                
@@ -839,6 +852,8 @@ namespace MusicPlayer
         public String Time { get; set; }
 
         public String filePath { get; set; }
+
+        public System.Drawing.Image imageSong { get; set; }
     }
 
     public class Playlist
