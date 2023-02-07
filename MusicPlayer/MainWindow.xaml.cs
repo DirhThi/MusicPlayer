@@ -259,6 +259,7 @@ namespace MusicPlayer
                     File.Delete(songItems[t].filePath);
 
                 }
+                checkSong();
                 songItems.Clear();
                 songLoad();
                 listSong_Load();
@@ -415,7 +416,19 @@ namespace MusicPlayer
             }
         }
 
-        
+        private void checkSong()
+        {
+            for(int i=currentPlaylist.Count-1;i>=0;i--)
+            {
+                
+                if(File.Exists(currentPlaylist[i].filePath)==false)
+                {
+                    currentPlaylist.RemoveAt(i);
+                }    
+
+            }    
+
+        }
 
         private void RepeatOncebtn_Click(object sender, RoutedEventArgs e)
         {
