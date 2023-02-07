@@ -57,7 +57,7 @@
                         <Icon:PackIconMaterial  Style="{StaticResource menuButtonIcon}"/>
                     </Grid>
                 </Button>
-                <Button  Cursor="Hand" x:Name="btnFavorite"  Style="{StaticResource menuButton}">
+               <!-- <Button  Cursor="Hand" x:Name="btnFavorite"  Style="{StaticResource menuButton}">
                     <Grid>
                         <TextBlock Text="Yêu thích" Margin="0 0 0 2" HorizontalAlignment="Left"  />
                         <Icon:PackIconMaterial  Style="{StaticResource menuButtonIcon}"/>
@@ -70,7 +70,7 @@
                         <TextBlock Text="Thịnh hành" Margin="0 0 0 2" />
                         <Icon:PackIconMaterial  Style="{StaticResource menuButtonIcon}" Visibility="Visible"/>
                     </Grid>
-                </Button>
+                </Button>-->
                 <Separator Margin="20 10"  Background="#22223B"/>
                 
             </StackPanel >

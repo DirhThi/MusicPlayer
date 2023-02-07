@@ -164,7 +164,19 @@
                 </Border.Effect>
                 <StackPanel Margin="5"
                     Orientation="Vertical">
-                    <TextBlock HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" Text="Lời bài hát"  Opacity="0.8" Margin="20 10"  Style="{StaticResource menuTitle}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" Text="Lời bài hát"  Opacity="0.8" Margin="20 10"  Style="{StaticResource menuTitle}"/>
+                        
+                    </StackPanel>
+                    <Border Background="Transparent" CornerRadius="10" Width="320" Height="215">
+                        <WrapPanel>
+                            <RichTextBox  Foreground="#22223B" SelectionBrush="Transparent" IsReadOnly="True" Opacity="0.9" FontStyle="Italic"  FontFamily="Arial" HorizontalAlignment="Center" Background="Transparent" Width="320" Height="220" x:Name="RTBlyrics" FontSize="14" >
+                                <FlowDocument LineHeight="20" TextAlignment="Center">
+                                    
+                                </FlowDocument>
+                            </RichTextBox>
+                        </WrapPanel>
+                    </Border>
                 </StackPanel>
             </Border>
 

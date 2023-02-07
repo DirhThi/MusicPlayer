@@ -83,6 +83,7 @@ namespace MusicPlayer
             playlistUC.datagridSongPlaylist.SelectionChanged += DatagridSongPlaylist_SelectionChanged;
             playlistUC.deleteSongbtn.Click += DeleteSongbtn_Click1;
             playlistUC.deletePlbtn.Click += DeletePlbtn_Click;
+        
             listSong_Load();
             home_Load();
             playlistUC_Load();
@@ -90,9 +91,11 @@ namespace MusicPlayer
             
         }
 
+      
+
         private void DeletePlbtn_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc muốn xóa tất cả bài hát đã chọn khỏi Playlist ? ", "Question", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Bạn có chắc muốn xóa Playlist đã chọn ? ", "Question", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 Playlist P = new Playlist();
                 for (int i = 0; i < playlistsItems.Count; i++)
@@ -100,9 +103,7 @@ namespace MusicPlayer
                     if (playlistsItems[i].Title == playlistUC.namePlaylistSong.Text)
                     {
                         P = playlistsItems[i];
-                    }
-                   
-
+                    }                  
                 }
                 playlistsItems.RemoveAt(playlistsItems.IndexOf(P));     
                 playlistUC.countPlaylist.Text = playlistsItems.Count + " Playlist";
@@ -112,6 +113,8 @@ namespace MusicPlayer
                 listsongUC.icPlaylist.Items.Refresh();
                 playlistUC.gridPlaylist.Visibility = Visibility.Visible;
                 playlistUC.gridSongPlaylist.Visibility = Visibility.Hidden;
+                File.Delete(P.PlaylistPath);
+                MessageBox.Show("Xóa thành công !");
             }
              
         }
@@ -261,6 +264,9 @@ namespace MusicPlayer
                 listsongUC.UpdateLayout();
                 listsongUC.gridSong.UpdateLayout();
                 listsongUC.gridSong.Items.Refresh();
+                homeUC.UpdateLayout();
+                homeUC.lsbTopSongs.UpdateLayout();
+                homeUC.lsbTopSongs.Items.Refresh();
 
                 autoorder();
             }
@@ -561,7 +567,8 @@ namespace MusicPlayer
             bitmap.Dispose();
             var brush = new ImageBrush(bitmapSource);
             songPictureDisplay.Fill = brush;
-            
+            homeUC.RTBlyrics.Document.Blocks.Clear();
+            homeUC.RTBlyrics.Document.Blocks.Add(new Paragraph(new Run(songPlaying.lyrics)));
         }
 
         private static void songLoad()
@@ -577,8 +584,7 @@ namespace MusicPlayer
                 Mp3Lib.Mp3File Song = new Mp3Lib.Mp3File(destinationDirectory + fileSong.Name);
                 int durationSong = Convert.ToInt32(Song.Audio.Duration);
                 string t = (durationSong / 60).ToString("00") + ":"+ (durationSong % 60).ToString("00");
-                Song.TagHandler.Lyrics = "lyrics here";
-                songItems.Add(new Song() { Number = i, nameSong = Song.TagHandler.Title, nameArtis = Song.TagHandler.Artist, Time = t,filePath=(destinationDirectory + fileSong.Name),imageSong=Song.TagHandler.Picture });
+                songItems.Add(new Song() { Number = i, nameSong = Song.TagHandler.Title, nameArtis = Song.TagHandler.Artist, Time = t,filePath=(destinationDirectory + fileSong.Name),imageSong=Song.TagHandler.Picture,lyrics=Song.TagHandler.Lyrics });
                 
                 i++;
                
@@ -592,7 +598,7 @@ namespace MusicPlayer
 
         private void MenuBtnChoose(Button bt)
         {
-            menuButton = new Button[] { btnHome, btnSong, btnPlaylist, btnFavorite, btnExplore };
+            menuButton = new Button[] { btnHome, btnSong, btnPlaylist/*, btnFavorite, btnExplore*/ };
             foreach( Button btn in menuButton )
             {
                 if(btn==bt)
@@ -687,11 +693,11 @@ namespace MusicPlayer
             playlistUC.Dialog.IsOpen = false;
         }
 
-        private void Explore_Click(object sender, RoutedEventArgs e)
+       /* private void Explore_Click(object sender, RoutedEventArgs e)
         {
             MenuBtnChoose(btnExplore);
             UCChoose(epUC);
-        }
+        }*/
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
@@ -854,6 +860,8 @@ namespace MusicPlayer
         public String filePath { get; set; }
 
         public System.Drawing.Image imageSong { get; set; }
+
+        public string lyrics { get; set; }
     }
 
     public class Playlist
