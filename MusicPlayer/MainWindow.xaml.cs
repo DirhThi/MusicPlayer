@@ -167,6 +167,8 @@ namespace MusicPlayer
                 playlistUC.datagridSongPlaylist.UpdateLayout();
                 playlistUC.datagridSongPlaylist.Items.Refresh();
                 playlistUC.countSong.Text = songPlaylist.Count + " Bài hát";
+                MessageBox.Show("Xóa thành công !");
+
             }
 
         }
@@ -257,7 +259,6 @@ namespace MusicPlayer
                     File.Delete(songItems[t].filePath);
 
                 }
-
                 songItems.Clear();
                 songLoad();
                 listSong_Load();
@@ -267,12 +268,13 @@ namespace MusicPlayer
                 homeUC.UpdateLayout();
                 homeUC.lsbTopSongs.UpdateLayout();
                 homeUC.lsbTopSongs.Items.Refresh();
-
                 autoorder();
+                MessageBox.Show("Xóa thành công !");
+
             }
-            
-            
-            
+
+
+
         }
 
         private void GridSong_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -371,6 +373,8 @@ namespace MusicPlayer
                     playlistUC.icPlaylist.Items.Refresh();
                     homeUC.panelPlaylist.Items.Refresh();
                     listsongUC.icPlaylist.Items.Refresh();
+                    MessageBox.Show("Thêm thành công !");
+
 
                 }
 
@@ -468,6 +472,10 @@ namespace MusicPlayer
                     {
                         File.Copy(fileName, destinationDirectory + Path.GetFileName(fileName));
                     }
+                    else
+                    {
+                        MessageBox.Show("Bài hát " + Path.GetFileName(fileName) + " đã tồn tại .");
+                    }
                 }
                 songItems.Clear();
                 songLoad();
@@ -477,7 +485,9 @@ namespace MusicPlayer
                 listsongUC.gridSong.Items.Refresh();
 
                 autoorder();
-               // home_Load();            
+
+                MessageBox.Show("Thêm hoàn thành");
+                // home_Load();            
             }
         }
 
@@ -845,6 +855,18 @@ namespace MusicPlayer
             else if (sdvolume.Value <= 100)
                 btnVolume.Content = FindResource("HVolume");
 
+        }
+
+        private void speedplaybtn(object sender, RoutedEventArgs e)
+        {
+            if(speedbtn.IsChecked==true)
+            {
+                mp3Player.SpeedRatio = 1.7;
+            }
+            else if(speedbtn.IsChecked==false)
+            {
+                mp3Player.SpeedRatio = 1.0;
+            }
         }
     }
     public class Song

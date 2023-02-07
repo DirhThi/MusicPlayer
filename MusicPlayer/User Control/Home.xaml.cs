@@ -34,7 +34,14 @@ namespace MusicPlayer.User_Control
         {
         }
 
+        private void Playlist_mouseEnter(object sender, MouseEventArgs e)
+        {
+            
+        }
 
-       
+        private void Playlist_mouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }
