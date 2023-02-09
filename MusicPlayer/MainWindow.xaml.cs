@@ -17,6 +17,8 @@ using MusicPlayer.Properties;
 using Microsoft.Win32;
 using System.IO;
 using System.ComponentModel;
+using System.Windows.Media.Animation;
+
 using WMPLib;
 
 
@@ -41,9 +43,10 @@ namespace MusicPlayer
         public static  List<Song> songItems = new List<Song>();
         public static List<Song> currentPlaylist = new List<Song>();
         public static int currentIndex = 0;
-        int trangthai = 0;//0:pause 1:playing
         int baitieptheo = 0;//0:shuffledisable 1:shuffle 2:repeatonce
         DispatcherTimer timer = new DispatcherTimer();
+        DispatcherTimer alarm = new DispatcherTimer();
+        int count = 0;
         int Position = 0;
       
         
@@ -64,6 +67,8 @@ namespace MusicPlayer
             timer.Interval = TimeSpan.FromTicks(1);
             timer.Tick += Timer_Tick;
             timer.Start();
+            alarm.Interval = TimeSpan.FromMilliseconds(1000);
+            alarm.Tick += Alarm_Tick;
             sdvolume.Value = 100;
             mp3Player.Volume = 1;
             homeUC.lsbTopSongs.SelectionChanged += LsbTopSongs_SelectionChanged;
@@ -83,7 +88,6 @@ namespace MusicPlayer
             playlistUC.datagridSongPlaylist.SelectionChanged += DatagridSongPlaylist_SelectionChanged;
             playlistUC.deleteSongbtn.Click += DeleteSongbtn_Click1;
             playlistUC.deletePlbtn.Click += DeletePlbtn_Click;
-        
             listSong_Load();
             home_Load();
             playlistUC_Load();
@@ -91,8 +95,23 @@ namespace MusicPlayer
             
         }
 
-      
+        private void Alarm_Tick(object sender, EventArgs e)
+        {
+            if (count > 0)
+            {
+                alarmtb.Text = (count / 60).ToString("00") + ":" + (count % 60).ToString("00");
+                count--;
 
+            }
+            else
+            {
+                alarmtb.Text = "Hẹn giờ";
+                alarm.Stop();
+                mp3Player.Pause();
+                btnPlay.IsChecked = false;
+
+            }
+        }
         private void DeletePlbtn_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Bạn có chắc muốn xóa Playlist đã chọn ? ", "Question", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
@@ -563,9 +582,9 @@ namespace MusicPlayer
                 displaySongPlaying(songPlaying);
                 mp3Player.Source = new Uri(songPlaying.filePath);
                 mp3Player.Play();  
-                trangthai = 1;
                 Mp3Lib.Mp3File Song = new Mp3Lib.Mp3File(songPlaying.filePath);
                 slider.Maximum = Convert.ToInt32(Song.Audio.Duration);
+                btnPlay.IsChecked = true;
             }
            
         }
@@ -724,34 +743,28 @@ namespace MusicPlayer
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
-            if(mp3Player.Source==null)
+            if (mp3Player.Source == null)
             {
                 mp3Player.Source = new Uri(songPlaying.filePath);
                 mp3Player.Play();
-                trangthai = 1;
                 Mp3Lib.Mp3File Song = new Mp3Lib.Mp3File(songPlaying.filePath);
                 slider.Maximum = Convert.ToInt32(Song.Audio.Duration);
             }
             else
             {
-                if (trangthai==1)
+                if(btnPlay.IsChecked==false)
                 {
                     mp3Player.Pause();
-                    trangthai = 0;
+                    
+                  //  rotate.Stop();
+                    
                 }
-                else if(trangthai==0)
+                else
                 {
                     mp3Player.Play();
-                    trangthai = 1;
+                //    rotate.Resume();
+
                 }
-            }
-            if (trangthai == 1)
-            {
-                btnPlay.Content = FindResource("Pause");
-            }
-            else
-            {
-                btnPlay.Content = FindResource("Play");
             }
 
 
@@ -880,6 +893,52 @@ namespace MusicPlayer
             {
                 mp3Player.SpeedRatio = 1.0;
             }
+        }
+
+        private void alarm5(object sender, RoutedEventArgs e)
+        {
+            count = 5*60;
+            alarm.Start();
+            expenderAlarm.IsExpanded = false;
+        }
+
+        private void alarm10(object sender, RoutedEventArgs e)
+        {
+            count = 10 * 60;
+            alarm.Start();
+            expenderAlarm.IsExpanded = false;
+        }
+
+       private void alarm15(object sender, RoutedEventArgs e)
+        {
+            count = 15 * 60;
+            alarm.Start();
+            expenderAlarm.IsExpanded = false;
+        }
+        
+        private void alarm20(object sender, RoutedEventArgs e)
+        {
+            count = 20 * 60;
+            alarm.Start();
+            expenderAlarm.IsExpanded = false;
+        }
+        private void alarm30(object sender, RoutedEventArgs e)
+        {
+            count = 30 * 60;
+            alarm.Start();
+            expenderAlarm.IsExpanded = false;
+        }
+        private void alarm45(object sender, RoutedEventArgs e)
+        {
+            count = 45 * 60;
+            alarm.Start();
+            expenderAlarm.IsExpanded = false;
+        }
+        private void alarm60(object sender, RoutedEventArgs e)
+        {
+            count = 60 * 60;
+            alarm.Start();
+            expenderAlarm.IsExpanded = false;
         }
     }
     public class Song
