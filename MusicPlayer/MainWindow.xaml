@@ -80,7 +80,8 @@
                         <materialDesign:PackIcon Kind="Alarm" Foreground="#243763" Width="25" Height="25" />
                     </Border>
                     <StackPanel Orientation="Vertical">
-                        <Expander x:Name="expenderAlarm"  Margin="20 0" Foreground="Transparent" Background="Transparent">
+                        <Expander ToolTip="Click 2 lần để tắt hẹn giờ" x:Name="expenderAlarm"  Margin="20 0" Foreground="Transparent" Background="Transparent">
+                            
                         <Expander.Header>
                             <TextBlock x:Name="alarmtb" Width="65"  Foreground="#243763" FontSize="16" TextAlignment="Right" Text="Hẹn giờ" Style="{StaticResource menuTitle}" Margin="00,0,-15,0"></TextBlock>
                         </Expander.Header>

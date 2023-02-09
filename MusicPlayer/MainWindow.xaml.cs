@@ -88,11 +88,19 @@ namespace MusicPlayer
             playlistUC.datagridSongPlaylist.SelectionChanged += DatagridSongPlaylist_SelectionChanged;
             playlistUC.deleteSongbtn.Click += DeleteSongbtn_Click1;
             playlistUC.deletePlbtn.Click += DeletePlbtn_Click;
+            expenderAlarm.MouseDoubleClick += ExpenderAlarm_MouseDoubleClick;
             listSong_Load();
             home_Load();
             playlistUC_Load();
 
             
+        }
+
+        private void ExpenderAlarm_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            alarmtb.Text = "Hẹn giờ";
+            alarm.Stop();
+            count = 0; 
         }
 
         private void Alarm_Tick(object sender, EventArgs e)
