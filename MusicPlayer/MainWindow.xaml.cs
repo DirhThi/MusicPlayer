@@ -61,8 +61,12 @@ namespace MusicPlayer
             homeUC.ShuffleDisabledbtn.Style = (Style)Application.Current.Resources["favoriteButtonChoose"];
             songLoad();
             currentPlaylist = songItems;
-            songPlaying = songItems.ElementAt(currentIndex);
-            displaySongPlaying(songPlaying);
+            if(songItems.Count>0)
+            {
+                songPlaying = songItems.ElementAt(currentIndex);
+                displaySongPlaying(songPlaying);
+            }
+            
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromTicks(1);
             timer.Tick += Timer_Tick;
